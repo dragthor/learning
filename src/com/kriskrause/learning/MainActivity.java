@@ -7,12 +7,10 @@ import android.widget.Toast;
 import android.view.View.OnTouchListener;
 import android.view.MotionEvent;
 import android.os.Bundle;
-import java.util.Random;
 import android.util.Log;
 
-public class MainActivity extends Activity implements OnTouchListener
+public class MainActivity extends Activity implements OnTouchListener, ICallbackListener
 {
-    private String[] _letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K" };
     private TextView _txtChar;
 
     /** Called when the activity is first created. */
@@ -28,12 +26,18 @@ public class MainActivity extends Activity implements OnTouchListener
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-	Log.d("LEARNING", "Touched.");
+	//Log.d("LEARNING", "Touched.");
 	//Toast.makeText(this,"onTouch",Toast.LENGTH_LONG).show();
 
-    	int idx = new Random().nextInt(_letters.length);
+	UpdateCharTask taskGetChar = new UpdateCharTask();
 
-	_txtChar.setText(_letters[idx]);
+	taskGetChar.setCallback(this);
+	taskGetChar.execute("");
+
 	return true;
     }
+
+   public void callback(String result) {
+	_txtChar.setText(result);
+   }
 }
