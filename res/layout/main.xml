@@ -5,6 +5,7 @@
     android:layout_height="fill_parent"
     >
 <TextView
+    android:id="@+id/txt_character"
     android:gravity="center"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
