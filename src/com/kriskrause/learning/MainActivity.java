@@ -3,7 +3,6 @@ package com.kriskrause.learning;
 import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.view.View.OnTouchListener;
 import android.view.MotionEvent;
 import android.view.MenuInflater;
@@ -17,15 +16,14 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
 {
     private TextView _txtChar;
     private int _mode = 1;
-    private String[] _preK = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
+    private String[] _letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
                                "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
                                "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" 
                               };
 
-    private String[] _k = { "and", "is", "dog", "cat", "mom", "dad", "I", "love", "you" 
-			  };
+    private String[] _1st100 = { "the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", "for", "on", "are", "as", "with", "his", "they", "I", "at", "be", "this", "have", "from" };
     
-    private String[] _1st = { "what", "also", "there", "again", "busy", "very", "hug", "because", "he", "she", "it", "good",
+    private String[] _2nd100 = { "what", "also", "there", "again", "busy", "very", "hug", "because", "he", "she", "it", "good",
 			      "bad"
 		            };
 
@@ -49,18 +47,18 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) { 
+    public boolean onOptionsItemSelected(MenuItem item) {
         Context context = getApplicationContext();
 
     	// Handle presses on the action bar items
         switch (item.getItemId()) {
-		case R.id.action_prek:
+		case R.id.action_letters:
 			_mode = 1;
 			return true;
-		case R.id.action_k:
+		case R.id.action_1st100:
 			_mode = 2;
 			return true;
-		case R.id.action_1st:
+		case R.id.action_2nd100:
 			_mode = 3;
 			return true;
         	case R.id.action_about:
@@ -74,19 +72,16 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-	//Log.d("LEARNING", "Touched.");
-	//Toast.makeText(this,"onTouch",Toast.LENGTH_LONG).show();
-
 	UpdateCharTask taskGetChar = new UpdateCharTask();
 
 	taskGetChar.setCallback(this);
 
 	if (_mode == 2) {
-		taskGetChar.execute(_k);
+		taskGetChar.execute(_1st100);
 	} else if (_mode == 3) {
-		taskGetChar.execute(_1st);
+		taskGetChar.execute(_2nd100);
 	} else {
-		taskGetChar.execute(_preK);
+		taskGetChar.execute(_letters);
 	}
 
 	return true;
