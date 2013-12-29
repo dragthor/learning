@@ -12,20 +12,9 @@ public class UpdateCharTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... params) {
-		String[] chars = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
-				   "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-				   "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"	
-				 };
+        	int idx = new Random().nextInt(params.length);
 
-        	int idx = new Random().nextInt(chars.length);
-
-		/* try {
-			Thread.sleep(1000);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} */
-
-                return chars[idx];
+                return params[idx];
         }
 
         @Override
