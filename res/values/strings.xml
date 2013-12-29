@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Learn to Read</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_prek">Pre-K</string>
+    <string name="action_k">Kindergarten</string>
+    <string name="action_1st">1st Grade</string>
+    <string name="action_about">About</string>
 </resources>

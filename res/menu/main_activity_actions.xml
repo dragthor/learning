@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" > 
+ <!-- Settings, should always be in the overflow --> 
+ <item android:id="@+id/action_prek" android:title="@string/action_prek" android:showAsAction="never" />
+ <item android:id="@+id/action_k" android:title="@string/action_k" android:showAsAction="never" /> 
+ <item android:id="@+id/action_1st" android:title="@string/action_1st" android:showAsAction="never" />  
+ <item android:id="@+id/action_settings" android:title="@string/action_settings" android:showAsAction="never" /> 
+ <item android:id="@+id/action_about" android:title="@string/action_about" android:showAsAction="never" /> 
+</menu>
