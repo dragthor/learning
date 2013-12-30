@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.Context;
+import android.content.Intent;
 
 public class MainActivity extends Activity implements OnTouchListener, ICallbackListener
 {
@@ -62,8 +63,10 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
 			_mode = 3;
 			return true;
         	case R.id.action_about:
+			 openAbout();
                          return true;
                 case R.id.action_settings:
+			 openSettings();
                          return true;
                 default:
                          return super.onOptionsItemSelected(item);
@@ -89,5 +92,17 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
 
    public void callback(String result) {
 	_txtChar.setText(result);
+   }
+
+   private void openAbout() {
+        Intent intent = new Intent(this, AboutActivity.class);
+
+        startActivity(intent);
+   }
+
+   private void openSettings() {
+      	Intent intent = new Intent(this, SettingsActivity.class);
+
+	startActivity(intent);
    }
 }

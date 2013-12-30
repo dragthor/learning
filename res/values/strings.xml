@@ -6,4 +6,6 @@
     <string name="action_1st100">1st 100 Words</string>
     <string name="action_2nd100">2nd 100 Words</string>
     <string name="action_about">About</string>
+    <string name="title_settings_activity">Settings</string>
+    <string name="title_about_activity">About</string>
 </resources>
