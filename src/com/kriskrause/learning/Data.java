@@ -7,7 +7,7 @@ public class Data {
 
     public static String[] First100 = { "the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", "for", "on", "are", "as",
  				"with", "his", "they", "I", "at", "be", "this", "have", "from",
- 				"or", "one" "had", "by", "word", "but", "not", "what", "all", "were", "we", "when", "your", "can", "said", "there", "use", 
+ 				"or", "one", "had", "by", "word", "but", "not", "what", "all", "were", "we", "when", "your", "can", "said", "there", "use", 
  				"an", "each", "which", "she", "do", "how", "their", "if"
  				};
 
