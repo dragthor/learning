@@ -5,12 +5,49 @@
     android:layout_height="fill_parent"
     >
 <TextView
-    android:id="@+id/txt_character"
     android:gravity="center"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:text="About"
-    android:textSize="85sp"
+    android:layout_height="wrap_content"
+    android:text="Learn to Read"
+    android:textSize="40sp"
     />
-</LinearLayout>
 
+<TextView
+    android:gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Version 1.0"
+    android:textSize="20sp"
+/>
+
+<TextView
+    android:gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="GPL v2"
+    android:textSize="20sp"
+/>
+
+<View android:layout_height="4dip" android:layout_width="fill_parent" />
+
+<TextView
+   android:gravity="center"
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:text="kris.krause@gmail.com"
+   android:textSize="20sp"
+   android:autoLink="email"   
+/>
+
+<View android:layout_height="4dip" android:layout_width="fill_parent" />
+
+<TextView
+   android:gravity="center"
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:text="https://github.com/dragthor/learning"
+   android:textSize="15sp"
+   android:autoLink="web"   
+/>
+
+</LinearLayout>
