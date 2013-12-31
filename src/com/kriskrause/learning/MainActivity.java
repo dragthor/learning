@@ -3,7 +3,7 @@ package com.kriskrause.learning;
 import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import android.view.MotionEvent;
 import android.view.MenuInflater;
 import android.view.Menu;
@@ -13,7 +13,7 @@ import android.util.Log;
 import android.content.Context;
 import android.content.Intent;
 
-public class MainActivity extends Activity implements OnTouchListener, ICallbackListener
+public class MainActivity extends Activity implements OnClickListener, ICallbackListener
 {
     private TextView _txtChar;
     private int _mode = 1;
@@ -26,15 +26,15 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
         setContentView(R.layout.main);
 
 	_txtChar = (TextView) findViewById(R.id.txt_character);
-        _txtChar.setOnTouchListener(this);
+        _txtChar.setOnClickListener(this);
     }
 
-    @Override 
-    public boolean onCreateOptionsMenu(Menu menu) { 
-         // Inflate the menu items for use in the action bar 
-         MenuInflater inflater = getMenuInflater(); 
-         inflater.inflate(R.menu.main_activity_actions, menu); 
-         return super.onCreateOptionsMenu(menu); 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+         // Inflate the menu items for use in the action bar
+         MenuInflater inflater = getMenuInflater();
+         inflater.inflate(R.menu.main_activity_actions, menu);
+         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
+    public void onClick(View v) {
 	UpdateCharTask taskGetChar = new UpdateCharTask();
 
 	taskGetChar.setCallback(this);
@@ -76,8 +76,6 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
 	} else {
 		taskGetChar.execute(Data.Letters);
 	}
-
-	return true;
     }
 
    public void callback(String result) {
