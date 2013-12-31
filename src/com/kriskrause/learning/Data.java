@@ -6,7 +6,12 @@ public class Data {
                                "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
 
     public static String[] First100 = { "the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", "for", "on", "are", "as",
- 				"with", "his", "they", "I", "at", "be", "this", "have", "from" };
+ 				"with", "his", "they", "I", "at", "be", "this", "have", "from",
+ 				"or", "one" "had", "by", "word", "but", "not", "what", "all", "were", "we", "when", "your", "can", "said", "there", "use", 
+ 				"an", "each", "which", "she", "do", "how", "their", "if"
+ 				};
 
-    public static String[] Second100 = { "what", "also", "there", "again", "busy", "very", "hug", "because", "he", "she", "it", "good", "bad" };
+    public static String[] Second100 = { "over", "new", "sound", "take", "only", "little", "work", "know", "place", "year", "live", "me", "back", 
+            "give", "most", "very", "after", "thing", "our", "just", "name", "good", "sentence", "man", "think"
+        };
 }
