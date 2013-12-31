@@ -17,16 +17,6 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
 {
     private TextView _txtChar;
     private int _mode = 1;
-    private String[] _letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
-                               "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-                               "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" 
-                              };
-
-    private String[] _1st100 = { "the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", "for", "on", "are", "as", "with", "his", "they", "I", "at", "be", "this", "have", "from" };
-    
-    private String[] _2nd100 = { "what", "also", "there", "again", "busy", "very", "hug", "because", "he", "she", "it", "good",
-			      "bad"
-		            };
 
     /** Called when the activity is first created. */
     @Override
@@ -80,11 +70,11 @@ public class MainActivity extends Activity implements OnTouchListener, ICallback
 	taskGetChar.setCallback(this);
 
 	if (_mode == 2) {
-		taskGetChar.execute(_1st100);
+		taskGetChar.execute(Data.First100);
 	} else if (_mode == 3) {
-		taskGetChar.execute(_2nd100);
+		taskGetChar.execute(Data.Second100);
 	} else {
-		taskGetChar.execute(_letters);
+		taskGetChar.execute(Data.Letters);
 	}
 
 	return true;
