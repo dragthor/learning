@@ -12,7 +12,9 @@
 	 android:theme="@android:style/Theme.Holo.Light"
 	>
         <activity android:name="MainActivity"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+		  android:configChanges="orientation|keyboardHidden|screenSize"
+		>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,7 +23,9 @@
 
 	<activity android:name="AboutActivity" 
                  android:label="@string/title_about_activity" 
-                 android:parentActivityName="MainActivity" > 
+                 android:parentActivityName="MainActivity"
+		 android:configChanges="orientation|keyboardHidden|screenSize"
+			 > 
                  <meta-data 
                          android:name="android.support.PARENT_ACTIVITY" 
                          android:value="MainActivity" /> 
@@ -29,7 +33,9 @@
 
 	<activity android:name="SettingsActivity" 
                  android:label="@string/title_settings_activity" 
-                 android:parentActivityName="MainActivity" > 
+                 android:parentActivityName="MainActivity"
+		 android:configChanges="orientation|keyboardHidden|screenSize"
+		> 
                  <meta-data 
                          android:name="android.support.PARENT_ACTIVITY" 
                          android:value="MainActivity" /> 
