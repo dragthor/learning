@@ -52,6 +52,9 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		case R.id.action_2nd100:
 			_mode = 3;
 			return true;
+		case R.id.action_3rd100:
+			_mode = 4;
+			return true;
         	case R.id.action_about:
 			 openAbout();
                          return true;
@@ -73,6 +76,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		taskGetChar.execute(Data.First100);
 	} else if (_mode == 3) {
 		taskGetChar.execute(Data.Second100);
+	} else if (_mode == 4) {
+		taskGetChar.execute(Data.Third100);
 	} else {
 		taskGetChar.execute(Data.Letters);
 	}
