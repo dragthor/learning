@@ -3,39 +3,31 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory 
-        android:title="First Category"
-        android:key="first_category">
+        android:title="General"
+        android:key="general">
         
         <CheckBoxPreference 
-            android:key="perform_updates"
-            android:summary="Enable or disable data updates"
-            android:title="Enable updates" 
+            android:key="enable_sound"
+            android:summary="Enable or disable sound"
+            android:title="Enable Sound" 
             android:defaultValue="true"
         />
-        
-        <ListPreference 
-            android:key="updates_interval"
-            android:title="Updates interval"
-            android:summary="Define how often updates will be performed"
-            android:defaultValue="1000" 
-            android:entries="@array/updateInterval"
-            android:entryValues="@array/updateIntervalValues"
-            android:dependency="perform_updates"
-        />    
             
     </PreferenceCategory>
 
     <PreferenceCategory 
-        android:title="Second Category"
-        android:key="second_category">
+        android:title="Learning"
+        android:key="learning">
+       
+	<ListPreference 
+            android:key="selection_style"
+            android:title="Selection Style"
+            android:summary="Determines how letters/words are chosen"
+            android:defaultValue="random" 
+            android:entries="@array/selectionStyle"
+            android:entryValues="@array/selectionStyleValues"
+        />   
 
-        <EditTextPreference
-            android:key="welcome_message"
-            android:title="Welcome Message" 
-            android:summary="Define the Welcome message to be shown"
-            android:dialogTitle="Welcome Message"
-            android:dialogMessage="Provide a message"    
-            android:defaultValue="Default welcome message" />
 
     </PreferenceCategory>
     

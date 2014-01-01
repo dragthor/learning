@@ -2,20 +2,14 @@
 
 <resources>
 
-    <string-array name="updateInterval">
-        <item name="1000">Every 1 second</item>
-        <item name="5000">Every 5 seconds</item>
-        <item name="30000">Every 30 seconds</item>
-        <item name="60000">Every 1 minute</item>
-        <item name="300000">Every 5 minutes</item>
+    <string-array name="selectionStyle">
+        <item name="random">Random</item>
+        <item name="sequential">Sequential</item>
     </string-array>
     
-    <string-array name="updateIntervalValues">
-        <item name="1000">1000</item>
-        <item name="5000">5000</item>
-        <item name="30000">30000</item>
-        <item name="60000">60000</item>
-        <item name="300000">300000</item>
+    <string-array name="selectionStyleValues">
+        <item name="random">random</item>
+        <item name="sequential">random</item>
     </string-array>
 
 </resources>
