@@ -16,5 +16,11 @@ public class Data {
 
     public static String[] Second100 = { "over", "new", "sound", "take", "only", "little", "work", "know", "place", "year", "live", "me", "back", 
             "give", "most", "very", "after", "thing", "our", "just", "name", "good", "sentence", "man", "think"
+    
         };
+
+   public static String[] Third100 = { "high", "every", "near", "add", "food", "between", "own", "below", "country", "plant", "last", "school", "father", 
+   "keep", "tree", "never", "start", "city", "earth", "eye", "light", "thought", "head", "under", "story"
+   };
+
 }
