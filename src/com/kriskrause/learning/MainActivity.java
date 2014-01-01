@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.content.Context;
 import android.content.Intent;
+import android.view.SoundEffectConstants;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener
 {
@@ -68,6 +69,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
     @Override
     public void onClick(View v) {
+	v.playSoundEffect(SoundEffectConstants.CLICK);
+
 	UpdateCharTask taskGetChar = new UpdateCharTask();
 
 	taskGetChar.setCallback(this);
