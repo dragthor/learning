@@ -28,6 +28,21 @@
             android:entryValues="@array/selectionStyleValues"
         />   
 
+<EditTextPreference 
+    android:defaultValue="185" 
+    android:key="letterSize" 
+    android:title="Letter Font Size"
+    android:inputType="number"
+    android:summary="Sets the font size for single letters" 
+    />  
+
+<EditTextPreference 
+    android:defaultValue="85" 
+    android:key="wordSize" 
+    android:title="Word Font Size" 
+    android:inputType="number"
+    android:summary="Sets the font size for words"
+    />  
 
     </PreferenceCategory>
     
