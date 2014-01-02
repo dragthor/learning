@@ -6,12 +6,14 @@
         android:title="General"
         android:key="general">
         
-        <CheckBoxPreference 
+        <SwitchPreference 
             android:key="enable_sound"
             android:summary="Enable or disable sound"
             android:title="Enable Sound" 
             android:defaultValue="true"
-        />
+            android:switchTextOn="On"
+	    android:switchTextOff="Off"
+	/>
             
     </PreferenceCategory>
 

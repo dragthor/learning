@@ -14,11 +14,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.SoundEffectConstants;
 import android.util.TypedValue;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener
 {
     private TextView _txtChar;
     private int _mode = 1;
+    private SharedPreferences _prefs;
 
     /** Called when the activity is first created. */
     @Override
@@ -26,6 +29,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+	_prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 	_txtChar = (TextView) findViewById(R.id.txt_character);
         _txtChar.setOnClickListener(this);
@@ -70,7 +75,9 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
     @Override
     public void onClick(View v) {
-	v.playSoundEffect(SoundEffectConstants.CLICK);
+	boolean clickSound = new Boolean(_prefs.getBoolean("enable_sound", true));
+
+	v.setSoundEffectsEnabled(clickSound);
 
 	UpdateRandomCharTask taskGetChar = new UpdateRandomCharTask();
 
