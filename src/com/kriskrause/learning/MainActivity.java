@@ -72,7 +72,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     public void onClick(View v) {
 	v.playSoundEffect(SoundEffectConstants.CLICK);
 
-	UpdateCharTask taskGetChar = new UpdateCharTask();
+	UpdateRandomCharTask taskGetChar = new UpdateRandomCharTask();
 
 	taskGetChar.setCallback(this);
 

@@ -3,7 +3,7 @@ package com.kriskrause.learning;
 import android.os.AsyncTask;
 import java.util.Random;
 
-public class UpdateCharTask extends AsyncTask<String, Void, String> {
+public class UpdateRandomCharTask extends AsyncTask<String, Void, String> {
 	private ICallbackListener _listener;
 	
 	public void setCallback(ICallbackListener listener) {
