@@ -13,6 +13,7 @@ import android.util.Log;
 import android.content.Context;
 import android.content.Intent;
 import android.view.SoundEffectConstants;
+import android.util.TypedValue;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener
 {
@@ -87,6 +88,12 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     }
 
    public void callback(String result) {
+	if (_mode == 1) {
+		_txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, 185);
+	} else {
+		_txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, 75);
+	}
+
 	_txtChar.setText(result);
    }
 
