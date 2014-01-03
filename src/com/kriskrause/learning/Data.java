@@ -50,4 +50,14 @@ public class Data {
    	"less", "yes", "fine", "feel", "machine", "clear", "pair", "fact", "base", "equation", "circle", "inches", "ago", "yet", "include", "street", "stood",
    	"government", "built"
    };
+   
+   public static String[] Sixth100 = {
+   	"can't", "picked", "legs", "beside", "matter", "simple", "sat", "gone", "square", "cells", "main", "sky", "syllables", "paint", "winter", "grass", "perhaps", 
+   	"mind", "wide", "million", "bill", "love", "written", "west", "felt", "cause", "length", "lay", "suddenly", "rain", "reason", "weather", "test", "exercise",
+   	"kept", "root", "direction", "eggs", "interest", "instruments", "center", "train", "arms", "meet", "farmers", "blue", "brother", "third", "ready", "wish", 
+   	"race", "months", "anything", "drop", "present", "paragraph", "divided", "developed", "beautiful", "raised", "general", "window", "store", "represent", 
+   	"energy", "difference", "job", "soft", "subject", "distance", "edge", "whether", "Europe", "heart", "past", "clothes", "moon", "site", "sign", "flowers", 
+   	"region", "sum", "record", "shall", "return", "summer", "finished", "teacher", "believe", "wall", "discovered", "held", "dance", "forest", "wild", "describe", 
+   	"members", "probably", "happy", "drive", 
+   };
 }
