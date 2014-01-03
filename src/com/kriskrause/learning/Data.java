@@ -40,4 +40,14 @@ public class Data {
    	"piece", "happened", "pattern", "figure", "told", "whole", "numeral", "certain", "usually", "measure", "table", "field", "didn't", "remember", "north", "travel",
    	"friends", "early", "slowly", "wood", "easy", "waves", "money", "fire", "heard", "reached", "map", "upon"
    };
+   
+   public static String[] Fifth100 = {
+   	"done", "decided", "plane", "filled", "English", "contain", " system", "heat", "road", "course", "behind", "full", "half", "surface", "ran", "hot", "ten", 
+   	"produce", "round", "check", "fly", "building", "boat", "object", "gave", "ocean", "game", "am", "box", "class", "force", "rule", "finally", "note", 
+   	"brought", "among", "wait", "nothing", "understand", "noun", "correct", "rest", "warm", "power", "oh", "carefully", "common", "cannot", "quickly", 
+   	"scientists", "bring", "able", "person", "inside", "explain", "six", "became", "wheels", "dry", "size", "shown", "stay", "though", "dark", "minutes",
+   	"green", "language", "ball", "strong", "known", "shape", "material", "verb", "island", "deep", "special", "stars", "week", "thousands", "heavy", "front",
+   	"less", "yes", "fine", "feel", "machine", "clear", "pair", "fact", "base", "equation", "circle", "inches", "ago", "yet", "include", "street", "stood",
+   	"government", "built"
+   };
 }
