@@ -12,3 +12,5 @@ The list was compiled by Dr. Edward B. Fry in 1996.  His research found that jus
 No ads.  No social.  No internet required.  Battery friendly.
 
 Android 4.0.3 and above.
+
+![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/Screenshot_2014-01-04-07-56-41.png)
