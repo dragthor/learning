@@ -45,6 +45,14 @@
    android:gravity="center"
    android:layout_width="fill_parent"
    android:layout_height="wrap_content"
+   android:textSize="15sp"
+   android:text="Source code &amp; more visit -"
+/>
+
+<TextView
+   android:gravity="center"
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
    android:text="https://github.com/dragthor/learning"
    android:textSize="15sp"
    android:autoLink="web"   
