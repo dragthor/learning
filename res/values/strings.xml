@@ -7,6 +7,8 @@
     <string name="action_2nd100">Level 2</string>
     <string name="action_3rd100">Level 3</string>
     <string name="action_4th100">Level 4</string>
+    <string name="action_5th100">Level 5</string>
+    <string name="action_6th100">Level 6</string>
 
     <string name="action_about">About</string>
     <string name="title_settings_activity">Settings</string>

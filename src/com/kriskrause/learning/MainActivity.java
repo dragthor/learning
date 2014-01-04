@@ -51,26 +51,23 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     	// Handle presses on the action bar items
         switch (item.getItemId()) {
 		case R.id.action_letters:
-			_mode = 1;
-			return true;
+			_mode = 1; return true;
 		case R.id.action_1st100:
-			_mode = 2;
-			return true;
+			_mode = 2; return true;
 		case R.id.action_2nd100:
-			_mode = 3;
-			return true;
+			_mode = 3; return true;
 		case R.id.action_3rd100:
-			_mode = 4;
-			return true;
+			_mode = 4; return true;
 		case R.id.action_4th100:
-			_mode = 5;
-			return true;
+			_mode = 5; return true;
+		case R.id.action_5th100:
+			_mode = 6; return true;
+		case R.id.action_6th100:
+			_mode = 7; return true;
         	case R.id.action_about:
-			 openAbout();
-                         return true;
+			openAbout(); return true;
                 case R.id.action_settings:
-			 openSettings();
-                         return true;
+			openSettings(); return true;
                 default:
                          return super.onOptionsItemSelected(item);
          }
@@ -94,6 +91,10 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		taskGetChar.execute(Data.Third100);
 	} else if (_mode == 5) {
 		taskGetChar.execute(Data.Fourth100);
+	} else if (_mode == 6) {
+		taskGetChar.execute(Data.Fifth100);
+	} else if (_mode == 7) {
+		taskGetChar.execute(Data.Sixth100);
 	} else {
 		taskGetChar.execute(Data.Letters);
 	}

@@ -5,6 +5,8 @@
  <item android:id="@+id/action_2nd100" android:title="@string/action_2nd100" android:showAsAction="never" />  
  <item android:id="@+id/action_3rd100" android:title="@string/action_3rd100" android:showAsAction="never" />  
  <item android:id="@+id/action_4th100" android:title="@string/action_4th100" android:showAsAction="never" />  
+ <item android:id="@+id/action_5th100" android:title="@string/action_5th100" android:showAsAction="never" />  
+ <item android:id="@+id/action_6th100" android:title="@string/action_6th100" android:showAsAction="never" />  
 
  <item android:id="@+id/action_settings" android:title="@string/action_settings" android:showAsAction="never" /> 
  <item android:id="@+id/action_about" android:title="@string/action_about" android:showAsAction="never" /> 
