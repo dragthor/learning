@@ -16,9 +16,12 @@ import android.view.SoundEffectConstants;
 import android.util.TypedValue;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.app.AlertDialog;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener
 {
+    public static final String LogTag = "LEARNING";
+
     private TextView _txtChar;
     private int _mode = 1;
     private SharedPreferences _prefs;
@@ -101,13 +104,27 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     }
 
    public void callback(String result) {
-	if (_mode == 1) {
-		_txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, 185);
-	} else {
-		_txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, 75);
-	}
+	try {
+	   int wordSize = Integer.parseInt(_prefs.getString("wordSize",  "85"));
+	   int letterSize = Integer.parseInt(_prefs.getString("letterSize",  "185"));
 
-	_txtChar.setText(result);
+	   if (_mode == 1) {
+		   _txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, letterSize);
+	   } else {
+		   _txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, wordSize);
+	   }
+
+	   _txtChar.setText(result);
+	} catch (Exception ex) {
+	   handleError("MainActivity::callback", ex);
+	}
+   }
+
+   private void handleError(String message, Exception ex) {
+	AlertDialog alert = new AlertDialog.Builder(this).create();
+	alert.setTitle("Error");
+	alert.setMessage(message + " - " + ex.getMessage());
+        alert.show();
    }
 
    private void openAbout() {
