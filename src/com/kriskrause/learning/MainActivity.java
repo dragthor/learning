@@ -17,6 +17,7 @@ import android.util.TypedValue;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.app.AlertDialog;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener
 {
@@ -37,6 +38,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 	_txtChar = (TextView) findViewById(R.id.txt_character);
         _txtChar.setOnClickListener(this);
+
+	setSound(_txtChar);
     }
 
     @Override
@@ -50,37 +53,58 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Context context = getApplicationContext();
+	boolean retVal = false;
+	boolean shouldToast = true;
 
     	// Handle presses on the action bar items
         switch (item.getItemId()) {
 		case R.id.action_letters:
-			_mode = 1; return true;
+			_mode = 1; retVal = true; break;
 		case R.id.action_1st100:
-			_mode = 2; return true;
+			_mode = 2; retVal = true; break;
 		case R.id.action_2nd100:
-			_mode = 3; return true;
+			_mode = 3; retVal = true; break;
 		case R.id.action_3rd100:
-			_mode = 4; return true;
+			_mode = 4; retVal = true; break;
 		case R.id.action_4th100:
-			_mode = 5; return true;
+			_mode = 5; retVal = true; break;
 		case R.id.action_5th100:
-			_mode = 6; return true;
+			_mode = 6; retVal = true; break;
 		case R.id.action_6th100:
-			_mode = 7; return true;
+			_mode = 7; retVal = true; break;
         	case R.id.action_about:
-			openAbout(); return true;
+			openAbout();
+			retVal = true;
+			shouldToast = false;
+			break;
                 case R.id.action_settings:
-			openSettings(); return true;
+			openSettings();
+			retVal = true;
+			shouldToast = false;
+			break;
                 default:
-                         return super.onOptionsItemSelected(item);
-         }
+                        retVal = super.onOptionsItemSelected(item);
+			shouldToast = false;
+			break;
+        }
+
+	if (retVal && shouldToast) {
+		Toast toast = Toast.makeText(this, item.getTitle() + " ...", Toast.LENGTH_SHORT);
+		toast.show();
+	}
+
+	return retVal;
     }
+
+   private void setSound(View v) {
+	boolean clickSound = new Boolean(_prefs.getBoolean("enable_sound", true));
+	
+	v.setSoundEffectsEnabled(clickSound);
+   }
 
     @Override
     public void onClick(View v) {
-	boolean clickSound = new Boolean(_prefs.getBoolean("enable_sound", true));
-
-	v.setSoundEffectsEnabled(clickSound);
+	setSound(v);
 
 	UpdateRandomCharTask taskGetChar = new UpdateRandomCharTask();
 

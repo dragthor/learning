@@ -36,7 +36,7 @@ public class Data {
    	"body", "order", "listen", "farm", "music", "red", "wind", "pulled", "color", "door", "rock", "draw", "stand", "sure", "space", "voice", "sun", "become", "covered", 
    	"seen", "questions", "top", "fast", "cold", "fish", "ship", "several", "cried", "area", "across", "hold", "plan", "mark", "today", "himself", "notice", "dog", 
    	"during", "toward", "south", "horse", "short", "five", "sing", "birds", "better", "step", "war", "problem", "best", "morning", "ground", "complete", "however", 
-   	"passed", "fall", "room", "low", "vowel", "king", "knew", "hours", "TRUE", "town", "since", "black", "hundred", "I'll", "ever", "products", "against", "unit", 
+   	"passed", "fall", "room", "low", "vowel", "king", "knew", "hours", "true", "town", "since", "black", "hundred", "I'll", "ever", "products", "against", "unit", 
    	"piece", "happened", "pattern", "figure", "told", "whole", "numeral", "certain", "usually", "measure", "table", "field", "didn't", "remember", "north", "travel",
    	"friends", "early", "slowly", "wood", "easy", "waves", "money", "fire", "heard", "reached", "map", "upon"
    };
