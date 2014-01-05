@@ -1,5 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" > 
  <!-- Settings, should always be in the overflow --> 
+ <item android:id="@+id/action_play" 
+android:title="@string/action_play" 
+android:icon="@drawable/ic_action_play"
+android:showAsAction="ifRoom" 
+
+/>
+
  <item android:id="@+id/action_letters" android:title="@string/action_letters" android:showAsAction="never" />
  <item android:id="@+id/action_1st100" android:title="@string/action_1st100" android:showAsAction="never" /> 
  <item android:id="@+id/action_2nd100" android:title="@string/action_2nd100" android:showAsAction="never" />  
