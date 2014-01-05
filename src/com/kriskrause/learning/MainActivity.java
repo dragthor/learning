@@ -18,14 +18,17 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.app.AlertDialog;
 import android.widget.Toast;
+import android.speech.tts.TextToSpeech;
+import java.util.Locale;
 
-public class MainActivity extends Activity implements OnClickListener, ICallbackListener
+public class MainActivity extends Activity implements OnClickListener, ICallbackListener, TextToSpeech.OnInitListener
 {
     public static final String LogTag = "LEARNING";
 
     private TextView _txtChar;
     private int _mode = 1;
     private SharedPreferences _prefs;
+    private TextToSpeech _speech;
 
     /** Called when the activity is first created. */
     @Override
@@ -36,11 +39,39 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 	_prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+	_speech = new TextToSpeech(this, this);
+
 	_txtChar = (TextView) findViewById(R.id.txt_character);
         _txtChar.setOnClickListener(this);
 
 	setSound(_txtChar);
     }
+
+    @Override public void onDestroy() {
+	if (_speech != null) {
+		_speech.stop();
+		_speech.shutdown();
+	}
+	super.onDestroy();
+    }
+
+   @Override
+   public void onInit(int status) {
+      if (status == TextToSpeech.SUCCESS) {
+	int result = _speech.setLanguage(Locale.US);
+
+	if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+	   // Language not supported.
+	   Toast toast = Toast.makeText(this, "Language not supported", Toast.LENGTH_SHORT);
+	} else {
+	   //speak.setEnabled(true);
+	   //speak();
+	   Toast toast = Toast.makeText(this, "Speech okay", Toast.LENGTH_SHORT);
+	}
+     } else {
+	Toast toast = Toast.makeText(this, "Speech init failed", Toast.LENGTH_SHORT);
+     }
+   }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,6 +170,9 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	   }
 
 	   _txtChar.setText(result);
+
+	  _speech.speak(result, TextToSpeech.QUEUE_FLUSH, null);
+
 	} catch (Exception ex) {
 	   handleError("MainActivity::callback", ex);
 	}
