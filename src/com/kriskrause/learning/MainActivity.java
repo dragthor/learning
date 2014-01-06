@@ -49,6 +49,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
    public void onResume() {
 	super.onResume();
 
+	// TODO: Apply "fix" for Kindle Fire.
+
 	// Apply setting changes for the action menu.
 	invalidateOptionsMenu();
    }
@@ -197,12 +199,13 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
    private void handleError(String message, Exception ex) {
 	AlertDialog alert = new AlertDialog.Builder(this).create();
 	alert.setTitle("Error");
+
 	if (ex != null) {
 		alert.setMessage(message + " - " + ex.getMessage());
         } else {
 		alert.setMessage(message);
 	}
-	
+
 	alert.show();
    }
 
