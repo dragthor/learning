@@ -23,14 +23,11 @@ import java.util.Locale;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener, TextToSpeech.OnInitListener
 {
-    public static final String LogTag = "LEARNING";
-
     private TextView _txtChar;
     private int _mode = 1;
     private SharedPreferences _prefs;
     private TextToSpeech _speech;
 
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -44,8 +41,17 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	_txtChar = (TextView) findViewById(R.id.txt_character);
         _txtChar.setOnClickListener(this);
 
-	setSound(_txtChar);
+	// Disable tap click sound.
+	_txtChar.setSoundEffectsEnabled(false);
     }
+
+   @Override
+   public void onResume() {
+	super.onResume();
+
+	// Apply setting changes for the action menu.
+	invalidateOptionsMenu();
+   }
 
     @Override public void onDestroy() {
 	if (_speech != null) {
@@ -55,35 +61,47 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	super.onDestroy();
     }
 
-   @Override
-   public void onInit(int status) {
-      if (status == TextToSpeech.SUCCESS) {
-	int result = _speech.setLanguage(Locale.US);
+    @Override
+    public void onInit(int status) {
+       Context context = getApplicationContext();
+       Toast toast;
 
-	if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-	   // Language not supported.
-	   Toast toast = Toast.makeText(this, "Language not supported", Toast.LENGTH_SHORT);
-	} else {
-	   //speak.setEnabled(true);
-	   //speak();
-	   Toast toast = Toast.makeText(this, "Speech okay", Toast.LENGTH_SHORT);
-	}
-     } else {
-	Toast toast = Toast.makeText(this, "Speech init failed", Toast.LENGTH_SHORT);
-     }
-   }
+       if (status == TextToSpeech.SUCCESS) {
+	  int result = _speech.setLanguage(Locale.US);
+
+	  if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+	     toast = Toast.makeText(context, "Language not supported ...", Toast.LENGTH_SHORT);
+	  } else {
+	     toast = Toast.makeText(context, "Speech ready ...", Toast.LENGTH_SHORT);
+	  }
+       } else {
+	  toast = Toast.makeText(context, "Speech init failed ...", Toast.LENGTH_SHORT);
+       }
+
+	toast.show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
          // Inflate the menu items for use in the action bar
          MenuInflater inflater = getMenuInflater();
          inflater.inflate(R.menu.main_activity_actions, menu);
+
          return super.onCreateOptionsMenu(menu);
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+	boolean clickSound = new Boolean(_prefs.getBoolean("enable_speech", true));
+
+	menu.getItem(0).setEnabled(clickSound);
+	invalidateOptionsMenu();
+
+       return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Context context = getApplicationContext();
 	boolean retVal = false;
 	boolean shouldToast = true;
 
@@ -113,6 +131,11 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			retVal = true;
 			shouldToast = false;
 			break;
+		case R.id.action_play:
+			retVal = true;
+			shouldToast = false;
+	  		_speech.speak(_txtChar.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+			break;
                 default:
                         retVal = super.onOptionsItemSelected(item);
 			shouldToast = false;
@@ -127,16 +150,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	return retVal;
     }
 
-   private void setSound(View v) {
-	boolean clickSound = new Boolean(_prefs.getBoolean("enable_sound", true));
-	
-	v.setSoundEffectsEnabled(clickSound);
-   }
-
     @Override
     public void onClick(View v) {
-	setSound(v);
-
 	UpdateRandomCharTask taskGetChar = new UpdateRandomCharTask();
 
 	taskGetChar.setCallback(this);
@@ -170,19 +185,25 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	   }
 
 	   _txtChar.setText(result);
-
-	  _speech.speak(result, TextToSpeech.QUEUE_FLUSH, null);
-
 	} catch (Exception ex) {
 	   handleError("MainActivity::callback", ex);
 	}
    }
 
+   private void handleError(String message) {
+   	handleError(message, null);
+   }
+
    private void handleError(String message, Exception ex) {
 	AlertDialog alert = new AlertDialog.Builder(this).create();
 	alert.setTitle("Error");
-	alert.setMessage(message + " - " + ex.getMessage());
-        alert.show();
+	if (ex != null) {
+		alert.setMessage(message + " - " + ex.getMessage());
+        } else {
+		alert.setMessage(message);
+	}
+	
+	alert.show();
    }
 
    private void openAbout() {

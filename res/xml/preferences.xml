@@ -7,9 +7,9 @@
         android:key="general">
         
         <SwitchPreference 
-            android:key="enable_sound"
-            android:summary="Enable or disable sound"
-            android:title="Enable Sound" 
+            android:key="enable_speech"
+            android:summary="Enable or disable speech"
+            android:title="Enable Speech" 
             android:defaultValue="true"
             android:switchTextOn="On"
 	    android:switchTextOff="Off"
