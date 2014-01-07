@@ -23,6 +23,7 @@ import java.util.Locale;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener, TextToSpeech.OnInitListener
 {
+    private static final int MaxCharSize = 500;
     private TextView _txtChar;
     private int _mode = 1;
     private SharedPreferences _prefs;
@@ -171,22 +172,26 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	} else if (_mode == 7) {
 		taskGetChar.execute(Data.Sixth100);
 	} else {
+		// _mode 1
 		taskGetChar.execute(Data.Letters);
 	}
     }
 
    public void callback(String result) {
+	int defaultWordSize = 85;
+	int defaultLetterSize = 185;
+
 	try {
-	   int wordSize = Integer.parseInt(_prefs.getString("wordSize",  "85"));
-	   int letterSize = Integer.parseInt(_prefs.getString("letterSize",  "185"));
 
-	   if (_mode == 1) {
-		   _txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, letterSize);
-	   } else {
-		   _txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, wordSize);
-	   }
+	   int wordSize = Integer.parseInt(_prefs.getString("wordSize",  Integer.toString(defaultWordSize)));
+	   int letterSize = Integer.parseInt(_prefs.getString("letterSize",  Integer.toString(defaultLetterSize)));
 
+	   if (wordSize >= MaxCharSize) wordSize = defaultWordSize;
+	   if (letterSize >= MaxCharSize) letterSize = defaultLetterSize;
+
+	   _txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 1) ? letterSize : wordSize);
 	   _txtChar.setText(result);
+
 	} catch (Exception ex) {
 	   handleError("MainActivity::callback", ex);
 	}
@@ -200,24 +205,27 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	AlertDialog alert = new AlertDialog.Builder(this).create();
 	alert.setTitle("Error");
 
-	if (ex != null) {
-		alert.setMessage(message + " - " + ex.getMessage());
-        } else {
-		alert.setMessage(message);
-	}
-
+	alert.setMessage(message + ((ex != null) ? " - " + ex.getMessage() : ""));
 	alert.show();
    }
 
    private void openAbout() {
-        Intent intent = new Intent(this, AboutActivity.class);
+	try {
+           Intent intent = new Intent(this, AboutActivity.class);
 
-        startActivity(intent);
+           startActivity(intent);
+	} catch (Exception ex) {
+	   handleError("MainActivity::openAbout", ex);
+	}
    }
 
    private void openSettings() {
-      	Intent intent = new Intent(this, SettingsActivity.class);
+	try {
+      	   Intent intent = new Intent(this, SettingsActivity.class);
 
-	startActivity(intent);
+	   startActivity(intent);
+	} catch (Exception ex) {
+	   handleError("MainActivity::openSettings");
+	}
    }
 }
