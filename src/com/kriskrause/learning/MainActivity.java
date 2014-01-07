@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.widget.Toast;
 import android.speech.tts.TextToSpeech;
 import java.util.Locale;
+import android.os.AsyncTask;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener, TextToSpeech.OnInitListener
 {
@@ -155,7 +156,15 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
     @Override
     public void onClick(View v) {
-	UpdateRandomCharTask taskGetChar = new UpdateRandomCharTask();
+	String selectionStyle = _prefs.getString("selection_style", "random");
+	CharTask taskGetChar;
+
+	if (selectionStyle == "random") {
+	   taskGetChar = new UpdateRandomCharTask();
+	} else {
+	   taskGetChar = new UpdateRandomCharTask();
+	   //taskGetChar = new UpdateSequentialCharTask(1);
+	}
 
 	taskGetChar.setCallback(this);
 
