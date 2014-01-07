@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 public abstract class CharTask extends AsyncTask<String, Void, String> {
 	private ICallbackListener _listener;
 
-	public abstract String getNext(String... params);
+	abstract String getNext(String... params);
 
 	public void setCallback(ICallbackListener listener) {
 		_listener = listener;
