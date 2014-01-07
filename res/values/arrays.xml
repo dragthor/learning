@@ -9,7 +9,7 @@
     
     <string-array name="selectionStyleValues">
         <item name="random">random</item>
-        <item name="sequential">random</item>
+        <item name="sequential">sequential</item>
     </string-array>
 
 </resources>
