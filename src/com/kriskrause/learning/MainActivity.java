@@ -159,14 +159,10 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	String selectionStyle = _prefs.getString("selection_style", "random");
 	CharTask taskGetChar;
 
-	//Toast toast = Toast.makeText(this, selectionStyle, Toast.LENGTH_SHORT);
-	//toast.show();
-
-	if (selectionStyle == "random") {
+	if (selectionStyle.equals("random")) {
 	   taskGetChar = new UpdateRandomCharTask();
 	} else {
-	   taskGetChar = new UpdateRandomCharTask();
-	   //taskGetChar = new UpdateSequentialCharTask(1);
+	   taskGetChar = new UpdateSequentialCharTask(0);
 	}
 
 	taskGetChar.setCallback(this);
