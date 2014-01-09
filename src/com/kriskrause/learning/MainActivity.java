@@ -29,6 +29,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private int _mode = 1;
     private SharedPreferences _prefs;
     private TextToSpeech _speech;
+    private int _seqIndex = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -158,11 +159,12 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     public void onClick(View v) {
 	String selectionStyle = _prefs.getString("selection_style", "random");
 	CharTask taskGetChar;
+   	String[] chars;
 
 	if (selectionStyle.equals("random")) {
 	   taskGetChar = new UpdateRandomCharTask();
 	} else {
-	   taskGetChar = new UpdateSequentialCharTask(0);
+	   taskGetChar = new UpdateSequentialCharTask(_seqIndex);
 	}
 
 	taskGetChar.setCallback(this);
