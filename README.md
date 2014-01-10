@@ -3,7 +3,7 @@ learning
 
 Interactive "Learn to read" application for grades K - 12 using the Fry word list (education).
 
-Interactive?  Yes.  Two people utilize the app at the same time.  One literate person guides, teaches, and interacts with the learner while they utilize the app.
+Interactive?  Yes.  Two people utilize the app at the same time.  One literate person guides, teaches, and interacts with the learner while they utilize the app.  However, there is a "play" icon so that the learner can "hear" the spoken word.
 
 The free sight words come from Fry's List of 1000 Instant words. His list is made up of the most frequently used words in children's books, novels, articles and textbooks. The words are ranked in order of frequency.
 
