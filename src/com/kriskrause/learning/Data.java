@@ -60,4 +60,14 @@ public class Data {
    	"region", "sum", "record", "shall", "return", "summer", "finished", "teacher", "believe", "wall", "discovered", "held", "dance", "forest", "wild", "describe", 
    	"members", "probably", "happy", "drive", 
    };
+   
+   public static String[] Seventh100 = {
+   	"cross", "already", "hair", "rolled", "speak", "instead", "age", "bear", "solve", "phrase", "amount", "wonder", "appear", "soil", "scale", "smiled", "metal", 
+   	"bed", "pounds", "angle", "son", "copy", "although", "fraction", "either", "free", "per", "Africa", "ice", "hope", "broken", "killed", "sleep", "spring", "moment", 
+   	"melody", "village", "case", "tiny", "bottom", "factors", "laughed", "possible", "trip", "result", "nation", "gold", "hole", "jumped", "quite", "milk", "poor", 
+   	"snow", "type", "quiet", "let's", "ride", "themselves", "natural", "fight", "care", "temperature", "lot", "surprise", "floor", "bright", "stone", "French", "hill", 
+   	"lead", "act", "died", "pushed", "everyone", "build", "beat", "baby", "method", "middle", "exactly", "buy", "section", "speed", "remain", "century", "lake", "count", 
+   	"dress", "outside", "iron", "consonant", "cat", "everything", "within", "someone", "couldn't", "tall", "dictionary", "sail", "fingers"
+   };
+   
 }
