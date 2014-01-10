@@ -78,4 +78,13 @@ public class Data {
    	"touch", "visit", "hunting", "you're", "information", "bit", "flow", "grew", "express", "whose", "lady", "skin", "mouth", "received", "students", "valley", "yard", "garden", 
    	"human", "cents", "equal", "please", "art", "key", "decimal", "strange", "feeling"
    };
+   
+   public static String[] Ninth100 = {
+   	"supply", "guess", "thick", "major", "corner", "silent", "blood", "observe", "electric", "trade", "lie", "tube", "insects", "rather", "spot", "necessary", "crops", "compare", 
+   	"bell", "weight", "tone", "crowd", "fun", "meat", "hit", "poem", "loud", "lifted", "sand", "enjoy", "consider", "process", "doctor", "elements", "suggested", "army", "provide", 
+   	"indicate", "thin", "hat", "thus", "except", "position", "property", "won't", "expect", "entered", "particular", "cook", "flat", "fruit", "swim", "bones", "seven", "tied", "terms", 
+   	"mall", "interesting", "rich", "current", "board", "sense", "dollars", "park", "modern", "string", "send", "sell", "compound", "blow", "sight", "shoulder", "mine", "famous", "chief", 
+   	"industry", "wasn't", "value", "Japanese", "wash", "fit", "wings", "stream", "block", "addition", "movement", "planets", "spread", "belong", "pole", "rhythm", "cattle", "safe", 
+   	"exciting", "eight", "wife", "soldiers", "branches", "science", "sharp"
+   };
 }
