@@ -87,4 +87,13 @@ public class Data {
    	"industry", "wasn't", "value", "Japanese", "wash", "fit", "wings", "stream", "block", "addition", "movement", "planets", "spread", "belong", "pole", "rhythm", "cattle", "safe", 
    	"exciting", "eight", "wife", "soldiers", "branches", "science", "sharp"
    };
+   
+   public static String[] Tenth100 {
+   	"company", "sister", "gun", "total", "radio", "oxygen", "similar", "deal", "we'll", "plural", "death", "determine", "action", "various", "score", "evening", "capital", "agreed", "forward", 
+   	"hoe", "factories", "opposite", "stretched", "rope", "settled", "wrong", "experience", "cotton", "yellow", "chart", "rose", "apple", "isn't", "prepared", "allow", "details", "southern", 
+   	"pretty", "fear", "entire", "truck", "solution", "workers", "corn", "fair", "fresh", "Washington", "substances", "printed", "shop", "Greek", "smell", "wouldn't", "suffix", "women", 
+   	"tools", "ahead", "especially", "bought", "conditions", "chance", "shoes", "led", "cows", "born", "actually", "march", "track", "level", "nose", "northern", "arrived", "triangle", "afraid",
+   	"create", "located", "molecules", "dead", "British", "sir", "France", "sugar", "difficult", "seat", "repeated", "adjective", "match", "division", "column", "fig", "win", "effect", "western", 
+   	"office", "doesn't", "underline", "church", "huge", "steel", "view"
+   };
 }
