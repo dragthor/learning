@@ -133,6 +133,14 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			setMode(5); retVal = true; break;
 		case R.id.action_6th100:
 			setMode(6); retVal = true; break;
+		case R.id.action_7th100:
+			setMode(7); retVal = true; break;
+		case R.id.action_8th100:
+			setMode(8); retVal = true; break;
+		case R.id.action_9th100:
+			setMode(9); retVal = true; break;
+		case R.id.action_10th100:
+			setMode(10); retVal = true; break;
         	case R.id.action_about:
 			openAbout();
 			retVal = true;
@@ -146,7 +154,11 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		case R.id.action_play:
 			retVal = true;
 			shouldToast = false;
-	  		_speech.speak(_txtChar.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+
+			// TODO: Is this good enough?  Is there a status?
+			if (_speech != null) {
+	  			_speech.speak(_txtChar.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+			}
 			break;
                 default:
                         retVal = super.onOptionsItemSelected(item);
@@ -180,6 +192,14 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		chars = Data.Fifth100;
 	} else if (_mode == 6) {
 		chars = Data.Sixth100;
+	} else if (_mode == 7) {
+		chars = Data.Seventh100;
+	} else if (_mode == 8) {
+		chars = Data.Eigth100;
+	} else if (_mode == 9) {
+		chars = Data.Ninth100;
+	} else if (_mode == 10) {
+		chars = Data.Tenth100;
 	} else {
 		// _mode 0
 		chars = Data.Letters;
