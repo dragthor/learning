@@ -70,4 +70,12 @@ public class Data {
    	"dress", "outside", "iron", "consonant", "cat", "everything", "within", "someone", "couldn't", "tall", "dictionary", "sail", "fingers"
    };
    
+   public static String[] Eigth100 = {
+   	"row", "president", "yourself", "caught", "least", "brown", "control", "fell", "catch", "trouble", "practice", "team", "climbed", "cool", "report", "God", "wrote", "cloud", 
+   	"straight", "captain", "shouted", "lost", "rise", "direct", "continued", "sent", "statement", "ring", "itself", "symbols", "stick", "serve", "else", "wear", "party", "child", 
+   	"plains", "bad", "seeds", "desert", "gas", "save", "suppose", "increase", "England", "experiment", "woman", "history", "burning", "engine", "coast", "cost", "design", "alone", 
+   	"bank", "maybe", "joined", "drawing", "period", "business", "foot", "east", "wire", "separate", "law", "choose", "pay", "break", "ears", "single", "clean", "uncle", "glass", 
+   	"touch", "visit", "hunting", "you're", "information", "bit", "flow", "grew", "express", "whose", "lady", "skin", "mouth", "received", "students", "valley", "yard", "garden", 
+   	"human", "cents", "equal", "please", "art", "key", "decimal", "strange", "feeling"
+   };
 }
