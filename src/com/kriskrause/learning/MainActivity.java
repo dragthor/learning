@@ -26,7 +26,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 {
     private static final int MaxCharSize = 500;
     private TextView _txtChar;
-    private int _mode = 1;
+    private int _mode = 0;
     private SharedPreferences _prefs;
     private TextToSpeech _speech;
     private int _seqIndex = 0;
@@ -113,19 +113,19 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     	// Handle presses on the action bar items
         switch (item.getItemId()) {
 		case R.id.action_letters:
-			_mode = 1; retVal = true; break;
+			_mode = 0; retVal = true; break;
 		case R.id.action_1st100:
-			_mode = 2; retVal = true; break;
+			_mode = 1; retVal = true; break;
 		case R.id.action_2nd100:
-			_mode = 3; retVal = true; break;
+			_mode = 2; retVal = true; break;
 		case R.id.action_3rd100:
-			_mode = 4; retVal = true; break;
+			_mode = 3; retVal = true; break;
 		case R.id.action_4th100:
-			_mode = 5; retVal = true; break;
+			_mode = 4; retVal = true; break;
 		case R.id.action_5th100:
-			_mode = 6; retVal = true; break;
+			_mode = 5; retVal = true; break;
 		case R.id.action_6th100:
-			_mode = 7; retVal = true; break;
+			_mode = 6; retVal = true; break;
         	case R.id.action_about:
 			openAbout();
 			retVal = true;
@@ -169,20 +169,20 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 	taskGetChar.setCallback(this);
 
-	if (_mode == 2) {
+	if (_mode == 1) {
 		taskGetChar.execute(Data.First100);
-	} else if (_mode == 3) {
+	} else if (_mode == 2) {
 		taskGetChar.execute(Data.Second100);
-	} else if (_mode == 4) {
+	} else if (_mode == 3) {
 		taskGetChar.execute(Data.Third100);
-	} else if (_mode == 5) {
+	} else if (_mode == 4) {
 		taskGetChar.execute(Data.Fourth100);
-	} else if (_mode == 6) {
+	} else if (_mode == 5) {
 		taskGetChar.execute(Data.Fifth100);
-	} else if (_mode == 7) {
+	} else if (_mode == 6) {
 		taskGetChar.execute(Data.Sixth100);
 	} else {
-		// _mode 1
+		// _mode 0
 		taskGetChar.execute(Data.Letters);
 	}
     }
@@ -199,7 +199,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	   if (wordSize >= MaxCharSize) wordSize = defaultWordSize;
 	   if (letterSize >= MaxCharSize) letterSize = defaultLetterSize;
 
-	   _txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 1) ? letterSize : wordSize);
+	   _txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0) ? letterSize : wordSize);
 	   _txtChar.setText(result);
 
 	} catch (Exception ex) {
