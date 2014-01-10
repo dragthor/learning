@@ -11,10 +11,10 @@ public class UpdateSequentialCharTask extends CharTask {
 
         @Override
         public String getNext(String... params) {
-		if (_index >= params.length) {
-			// Guard against walking off end of array.
-			_index = 0;
-		}
+		// Guard against walking off end of array.
+		if (_index >= params.length) _index = 0;
+
+		if (_index < 0) _index = 0;
 
                 return params[_index];
         }

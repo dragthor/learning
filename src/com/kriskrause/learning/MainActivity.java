@@ -29,7 +29,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private int _mode = 0;
     private SharedPreferences _prefs;
     private TextToSpeech _speech;
-    private int _seqIndex = 0;
+    private int _seqIndex = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -70,19 +70,21 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     public void onInit(int status) {
        Context context = getApplicationContext();
        Toast toast;
+       String msg;
 
        if (status == TextToSpeech.SUCCESS) {
 	  int result = _speech.setLanguage(Locale.US);
 
 	  if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-	     toast = Toast.makeText(context, "Language not supported ...", Toast.LENGTH_SHORT);
+	     msg = "Language not supported ...";
 	  } else {
-	     toast = Toast.makeText(context, "Speech ready ...", Toast.LENGTH_SHORT);
+	     msg = "Speech ready ...";
 	  }
        } else {
-	  toast = Toast.makeText(context, "Speech init failed ...", Toast.LENGTH_SHORT);
+	  msg = "Speech init failed ...";
        }
 
+	toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
 	toast.show();
     }
 
@@ -105,6 +107,11 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
        return super.onPrepareOptionsMenu(menu);
     }
 
+    private void setMode(int mode) {
+	_mode = mode;
+	_seqIndex = -1;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 	boolean retVal = false;
@@ -113,19 +120,19 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     	// Handle presses on the action bar items
         switch (item.getItemId()) {
 		case R.id.action_letters:
-			_mode = 0; retVal = true; break;
+			setMode(0); retVal = true; break;
 		case R.id.action_1st100:
-			_mode = 1; retVal = true; break;
+			setMode(1); retVal = true; break;
 		case R.id.action_2nd100:
-			_mode = 2; retVal = true; break;
+			setMode(2); retVal = true; break;
 		case R.id.action_3rd100:
-			_mode = 3; retVal = true; break;
+			setMode(3); retVal = true; break;
 		case R.id.action_4th100:
-			_mode = 4; retVal = true; break;
+			setMode(4); retVal = true; break;
 		case R.id.action_5th100:
-			_mode = 5; retVal = true; break;
+			setMode(5); retVal = true; break;
 		case R.id.action_6th100:
-			_mode = 6; retVal = true; break;
+			setMode(6); retVal = true; break;
         	case R.id.action_about:
 			openAbout();
 			retVal = true;
@@ -161,30 +168,35 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	CharTask taskGetChar;
    	String[] chars;
 
+	if (_mode == 1) {
+		chars = Data.First100;
+	} else if (_mode == 2) {
+		chars = Data.Second100;
+	} else if (_mode == 3) {
+		chars = Data.Third100;
+	} else if (_mode == 4) {
+		chars = Data.Fourth100;
+	} else if (_mode == 5) {
+		chars = Data.Fifth100;
+	} else if (_mode == 6) {
+		chars = Data.Sixth100;
+	} else {
+		// _mode 0
+		chars = Data.Letters;
+	}
+
 	if (selectionStyle.equals("random")) {
 	   taskGetChar = new UpdateRandomCharTask();
 	} else {
+	   _seqIndex++;
+
+	   if (_seqIndex >= chars.length) _seqIndex = 0;
+
 	   taskGetChar = new UpdateSequentialCharTask(_seqIndex);
 	}
 
 	taskGetChar.setCallback(this);
-
-	if (_mode == 1) {
-		taskGetChar.execute(Data.First100);
-	} else if (_mode == 2) {
-		taskGetChar.execute(Data.Second100);
-	} else if (_mode == 3) {
-		taskGetChar.execute(Data.Third100);
-	} else if (_mode == 4) {
-		taskGetChar.execute(Data.Fourth100);
-	} else if (_mode == 5) {
-		taskGetChar.execute(Data.Fifth100);
-	} else if (_mode == 6) {
-		taskGetChar.execute(Data.Sixth100);
-	} else {
-		// _mode 0
-		taskGetChar.execute(Data.Letters);
-	}
+	taskGetChar.execute(chars);
     }
 
    public void callback(String result) {
