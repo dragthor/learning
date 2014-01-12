@@ -14,6 +14,12 @@
             android:switchTextOn="On"
 	    android:switchTextOff="Off"
 	/>
+
+	<Preference android:title="Voice &amp; Speech Settings"
+		android:key="button_tts_settings" 
+            	android:summary="Adjust the rate or change engine"
+		android:dependency="enable_speech"
+	/>
             
     </PreferenceCategory>
 

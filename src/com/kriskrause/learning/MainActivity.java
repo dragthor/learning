@@ -24,6 +24,8 @@ import android.os.AsyncTask;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener, TextToSpeech.OnInitListener
 {
+    public static final String TAG = "LEARNING";
+
     private static final int MaxCharSize = 500;
     private TextView _txtChar;
     private int _mode = 0;
