@@ -15,9 +15,9 @@ All 1,000 words in groups of 100, plus the alphabet (upper &amp; lower) and numb
 
 Android 4.0.3 and above.
 
-![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/Screenshot_2014-01-04-07-56-41.png)
+![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/letter.png)
 
-![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/Screenshot_2014-01-04-07-56-52.png)
+![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/word.png)
 
-![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/Screenshot_2014-01-04-07-57-01.png)
+![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/settings.png)
 
