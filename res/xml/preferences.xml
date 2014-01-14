@@ -30,7 +30,7 @@
 	<ListPreference 
             android:key="selection_style"
             android:title="Selection Style"
-            android:summary="Determines how letters/words are chosen"
+            android:summary="Determines how letters/numbers/words are chosen"
             android:defaultValue="random" 
             android:entries="@array/selectionStyle"
             android:entryValues="@array/selectionStyleValues"
@@ -39,9 +39,9 @@
 <EditTextPreference 
     android:defaultValue="185" 
     android:key="letterSize" 
-    android:title="Letter Font Size"
+    android:title="Letter &amp; Number Font Size"
     android:inputType="number"
-    android:summary="Sets the font size for single letters" 
+    android:summary="Sets the font size for single letters &amp; numbers" 
     android:numeric="integer"
     />  
 

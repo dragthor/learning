@@ -5,12 +5,16 @@
    android:icon="@drawable/ic_action_play"
    android:showAsAction="always" />
 
- <item android:id="@+id/action_settings" android:title="@string/action_settings" android:showAsAction="never" /> 
- <item android:id="@+id/action_about" android:title="@string/action_about" android:showAsAction="never" /> 
+ <item android:id="@+id/action_settings" android:title="@string/action_settings" android:showAsAction="never" 
+   android:icon="@drawable/ic_action_settings"	
+	/> 
 
- <item android:id="@+id/action_parent" android:title="@string/action_parent" android:showAsAction="never">
+ <item android:id="@+id/action_parent" android:title="@string/action_parent" android:showAsAction="never"
+	   android:icon="@drawable/ic_action_sort_by_size">
 	<menu>
  	  <item android:id="@+id/action_letters" android:title="@string/action_letters" android:showAsAction="never" />
+ 	  <item android:id="@+id/action_numbers" android:title="@string/action_numbers" android:showAsAction="never" />
+
  	  <item android:id="@+id/action_1st100" android:title="@string/action_1st100" android:showAsAction="never" /> 
  	  <item android:id="@+id/action_2nd100" android:title="@string/action_2nd100" android:showAsAction="never" />  
  	  <item android:id="@+id/action_3rd100" android:title="@string/action_3rd100" android:showAsAction="never" />  
@@ -23,5 +27,7 @@
  	  <item android:id="@+id/action_10th100" android:title="@string/action_10th100" android:showAsAction="never" />  
 	</menu>
 </item>
+
+ <item android:id="@+id/action_about" android:title="@string/action_about" android:showAsAction="never" android:icon="@drawable/ic_action_about" /> 
 
 </menu>

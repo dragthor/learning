@@ -31,7 +31,7 @@ public class Data {
 		"carry", "state", "once", "book", "hear", "stop", "without", "second", "later", "miss", "idea", "enough", "eat", "face", "watch", "far", "Indian", "real", 
 		"almost", "let", "above", "girl", "sometimes", "mountain", "cut", "young", "talk", "soon", "list", "song", "begin", "leave", "family", "it's"
    };
-   
+
    public static String[] Fourth100 = {
    	"body", "order", "listen", "farm", "music", "red", "wind", "pulled", "color", "door", "rock", "draw", "stand", "sure", "space", "voice", "sun", "become", "covered", 
    	"seen", "questions", "top", "fast", "cold", "fish", "ship", "several", "cried", "area", "across", "hold", "plan", "mark", "today", "himself", "notice", "dog", 
@@ -40,7 +40,7 @@ public class Data {
    	"piece", "happened", "pattern", "figure", "told", "whole", "numeral", "certain", "usually", "measure", "table", "field", "didn't", "remember", "north", "travel",
    	"friends", "early", "slowly", "wood", "easy", "waves", "money", "fire", "heard", "reached", "map", "upon"
    };
-   
+
    public static String[] Fifth100 = {
    	"done", "decided", "plane", "filled", "English", "contain", " system", "heat", "road", "course", "behind", "full", "half", "surface", "ran", "hot", "ten", 
    	"produce", "round", "check", "fly", "building", "boat", "object", "gave", "ocean", "game", "am", "box", "class", "force", "rule", "finally", "note", 
@@ -50,7 +50,7 @@ public class Data {
    	"less", "yes", "fine", "feel", "machine", "clear", "pair", "fact", "base", "equation", "circle", "inches", "ago", "yet", "include", "street", "stood",
    	"government", "built"
    };
-   
+
    public static String[] Sixth100 = {
    	"can't", "picked", "legs", "beside", "matter", "simple", "sat", "gone", "square", "cells", "main", "sky", "syllables", "paint", "winter", "grass", "perhaps", 
    	"mind", "wide", "million", "bill", "love", "written", "west", "felt", "cause", "length", "lay", "suddenly", "rain", "reason", "weather", "test", "exercise",
@@ -58,9 +58,9 @@ public class Data {
    	"race", "months", "anything", "drop", "present", "paragraph", "divided", "developed", "beautiful", "raised", "general", "window", "store", "represent", 
    	"energy", "difference", "job", "soft", "subject", "distance", "edge", "whether", "Europe", "heart", "past", "clothes", "moon", "site", "sign", "flowers", 
    	"region", "sum", "record", "shall", "return", "summer", "finished", "teacher", "believe", "wall", "discovered", "held", "dance", "forest", "wild", "describe", 
-   	"members", "probably", "happy", "drive", 
+   	"members", "probably", "happy", "drive"
    };
-   
+
    public static String[] Seventh100 = {
    	"cross", "already", "hair", "rolled", "speak", "instead", "age", "bear", "solve", "phrase", "amount", "wonder", "appear", "soil", "scale", "smiled", "metal", 
    	"bed", "pounds", "angle", "son", "copy", "although", "fraction", "either", "free", "per", "Africa", "ice", "hope", "broken", "killed", "sleep", "spring", "moment", 
@@ -69,7 +69,7 @@ public class Data {
    	"lead", "act", "died", "pushed", "everyone", "build", "beat", "baby", "method", "middle", "exactly", "buy", "section", "speed", "remain", "century", "lake", "count", 
    	"dress", "outside", "iron", "consonant", "cat", "everything", "within", "someone", "couldn't", "tall", "dictionary", "sail", "fingers"
    };
-   
+
    public static String[] Eigth100 = {
    	"row", "president", "yourself", "caught", "least", "brown", "control", "fell", "catch", "trouble", "practice", "team", "climbed", "cool", "report", "God", "wrote", "cloud", 
    	"straight", "captain", "shouted", "lost", "rise", "direct", "continued", "sent", "statement", "ring", "itself", "symbols", "stick", "serve", "else", "wear", "party", "child", 
@@ -78,7 +78,7 @@ public class Data {
    	"touch", "visit", "hunting", "you're", "information", "bit", "flow", "grew", "express", "whose", "lady", "skin", "mouth", "received", "students", "valley", "yard", "garden", 
    	"human", "cents", "equal", "please", "art", "key", "decimal", "strange", "feeling"
    };
-   
+
    public static String[] Ninth100 = {
    	"supply", "guess", "thick", "major", "corner", "silent", "blood", "observe", "electric", "trade", "lie", "tube", "insects", "rather", "spot", "necessary", "crops", "compare", 
    	"bell", "weight", "tone", "crowd", "fun", "meat", "hit", "poem", "loud", "lifted", "sand", "enjoy", "consider", "process", "doctor", "elements", "suggested", "army", "provide", 
@@ -87,7 +87,7 @@ public class Data {
    	"industry", "wasn't", "value", "Japanese", "wash", "fit", "wings", "stream", "block", "addition", "movement", "planets", "spread", "belong", "pole", "rhythm", "cattle", "safe", 
    	"exciting", "eight", "wife", "soldiers", "branches", "science", "sharp"
    };
-   
+
    public static String[] Tenth100 = {
    	"company", "sister", "gun", "total", "radio", "oxygen", "similar", "deal", "we'll", "plural", "death", "determine", "action", "various", "score", "evening", "capital", "agreed", "forward", 
    	"hoe", "factories", "opposite", "stretched", "rope", "settled", "wrong", "experience", "cotton", "yellow", "chart", "rose", "apple", "isn't", "prepared", "allow", "details", "southern", 
@@ -95,5 +95,9 @@ public class Data {
    	"tools", "ahead", "especially", "bought", "conditions", "chance", "shoes", "led", "cows", "born", "actually", "march", "track", "level", "nose", "northern", "arrived", "triangle", "afraid",
    	"create", "located", "molecules", "dead", "British", "sir", "France", "sugar", "difficult", "seat", "repeated", "adjective", "match", "division", "column", "fig", "win", "effect", "western", 
    	"office", "doesn't", "underline", "church", "huge", "steel", "view"
+   };
+
+   public static String[] Numbers = {
+	"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
    };
 }

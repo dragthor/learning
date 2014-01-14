@@ -54,8 +54,6 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
    public void onResume() {
 	super.onResume();
 
-	// TODO: Apply "fix" for Kindle Fire.
-
 	// Apply setting changes for the action menu.
 	invalidateOptionsMenu();
    }
@@ -143,6 +141,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			setMode(9); retVal = true; break;
 		case R.id.action_10th100:
 			setMode(10); retVal = true; break;
+		case R.id.action_numbers:
+			setMode(11); retVal = true; break;
         	case R.id.action_about:
 			openAbout();
 			retVal = true;
@@ -202,6 +202,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		chars = Data.Ninth100;
 	} else if (_mode == 10) {
 		chars = Data.Tenth100;
+	} else if (_mode == 11) {
+		chars = Data.Numbers;
 	} else {
 		// _mode 0
 		chars = Data.Letters;
@@ -233,7 +235,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 	   if (wordSize >= MaxCharSize) wordSize = defaultWordSize;
 	   if (letterSize >= MaxCharSize) letterSize = defaultLetterSize;
 
-	   _txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0) ? letterSize : wordSize);
+	   // Single letters or numbers vs. words
+	   _txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 11) ? letterSize : wordSize);
 	   _txtChar.setText(result);
 
 	} catch (Exception ex) {
