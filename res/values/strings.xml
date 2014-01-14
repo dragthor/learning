@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Learn to Read</string>
+    <string name="app_name">Reading Buddy</string>
     <string name="action_play">Play</string>
 
     <string name="action_parent">Choose Level...</string>
