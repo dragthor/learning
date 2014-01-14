@@ -8,7 +8,7 @@
     android:gravity="center"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="Learn to Read"
+    android:text="@string/app_name"
     android:textSize="40sp"
     />
 
