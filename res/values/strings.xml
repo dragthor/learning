@@ -24,4 +24,8 @@
     <string name="action_about">About</string>
     <string name="title_settings_activity">Settings</string>
     <string name="title_about_activity">About</string>
+
+    <string name="language_unsupported">Language not supported ...</string>
+    <string name="speech_ready">Speech ready ...</string>
+    <string name="speech_fail">Speech init failed ...</string>
 </resources>

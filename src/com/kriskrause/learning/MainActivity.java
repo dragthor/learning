@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
-import android.view.MotionEvent;
 import android.view.MenuInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +19,7 @@ import android.app.AlertDialog;
 import android.widget.Toast;
 import android.speech.tts.TextToSpeech;
 import java.util.Locale;
-import android.os.AsyncTask;
+import android.content.res.Resources;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener, TextToSpeech.OnInitListener
 {
@@ -68,23 +67,23 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
     @Override
     public void onInit(int status) {
-       Context context = getApplicationContext();
        Toast toast;
        String msg;
+       Resources res = getResources();
 
        if (status == TextToSpeech.SUCCESS) {
 	  int result = _speech.setLanguage(Locale.US);
 
 	  if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-	     msg = "Language not supported ...";
+	     msg = res.getString(R.string.language_unsupported);
 	  } else {
-	     msg = "Speech ready ...";
+	     msg = res.getString(R.string.speech_ready);
 	  }
        } else {
-	  msg = "Speech init failed ...";
+	  msg = res.getString(R.string.speech_fail);
        }
 
-	toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+	toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
 	toast.show();
     }
 
@@ -249,6 +248,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
    }
 
    private void handleError(String message, Exception ex) {
+	Log.e(MainActivity.TAG, "exception", ex);
+
 	AlertDialog alert = new AlertDialog.Builder(this).create();
 	alert.setTitle("Error");
 
