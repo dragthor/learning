@@ -1,13 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" > 
- <!-- Settings, should always be in the overflow --> 
+ 
  <item android:id="@+id/action_play" 
    android:title="@string/action_play" 
    android:icon="@drawable/ic_action_play"
    android:showAsAction="always" />
 
- <item android:id="@+id/action_settings" android:title="@string/action_settings" android:showAsAction="never" 
-   android:icon="@drawable/ic_action_settings"	
-	/> 
+ <item android:id="@+id/action_settings" android:title="@string/action_settings" android:showAsAction="never" android:icon="@drawable/ic_action_settings" /> 
 
  <item android:id="@+id/action_parent" android:title="@string/action_parent" android:showAsAction="never"
 	   android:icon="@drawable/ic_action_sort_by_size">

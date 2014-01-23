@@ -28,7 +28,7 @@
 			 > 
                  <meta-data 
                          android:name="android.support.PARENT_ACTIVITY" 
-                         android:value="MainActivity" /> 
+                         android:value="com.kriskrause.learning.MainActivity" /> 
          </activity>
 
 	<activity android:name="SettingsActivity" 
@@ -38,7 +38,7 @@
 		> 
                  <meta-data 
                          android:name="android.support.PARENT_ACTIVITY" 
-                         android:value="MainActivity" /> 
+                         android:value="com.kriskrause.learning.MainActivity" /> 
          </activity>
 
     </application>
