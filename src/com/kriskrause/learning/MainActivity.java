@@ -127,6 +127,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private void setMode(int mode) {
 		_mode = mode;
 		_seqIndex = -1;
+
+		onClick(getTextChar());
     }
 	
     @Override
@@ -254,7 +256,10 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 			// Single letters or numbers vs. words
 			getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 11) ? letterSize : wordSize);
-			getTextChar().setText(result);
+			
+			if (result != null) {
+				getTextChar().setText(result);
+			}
 
 		} catch (Exception ex) {
 			handleError("MainActivity::callbackTextChanged", ex);
