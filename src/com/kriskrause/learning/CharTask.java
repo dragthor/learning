@@ -18,7 +18,7 @@ public abstract class CharTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected void onPostExecute(String result) {
-        	_listener.callback(result);
+        	_listener.callbackTextChanged(result);
         }
 
         @Override

@@ -25,6 +25,10 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 {
     public static final String TAG = "LEARNING";
 
+    private static final String LAST_DISPLAY = "LAST_DISPLAY";
+    private static final String LAST_MODE = "LAST_MODE";
+    private static final String LAST_SEQUENCE_POS = "LAST_SEQUENCE_POS";
+
     private static final int MaxCharSize = 500;
     private TextView _txtChar;
     private int _mode = 0;
@@ -42,11 +46,17 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 		_speech = new TextToSpeech(this, this);
 
-		_txtChar = (TextView) findViewById(R.id.txt_character);
-	    _txtChar.setOnClickListener(this);
+		getTextChar().setOnClickListener(this);
 
 		// Disable tap click sound.
-		_txtChar.setSoundEffectsEnabled(false);
+		getTextChar().setSoundEffectsEnabled(false);
+
+		if (savedInstanceState != null) {
+			_mode = savedInstanceState.getInt(LAST_MODE);
+			_seqIndex = savedInstanceState.getInt(LAST_SEQUENCE_POS);
+
+			callbackTextChanged(savedInstanceState.getString(LAST_DISPLAY));
+		}
     }
 
 	@Override
@@ -54,7 +64,17 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		super.onResume();
 
 		// Apply setting changes for the action menu.
-		//invalidateOptionsMenu();
+		
+		
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+
+		outState.putString(LAST_DISPLAY, getTextChar().getText().toString());
+		outState.putInt(LAST_MODE, _mode);
+		outState.putInt(LAST_SEQUENCE_POS, _seqIndex);
 	}
 
     @Override 
@@ -102,7 +122,6 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		boolean clickSound = new Boolean(_prefs.getBoolean("enable_speech", true));
 
 		menu.getItem(0).setEnabled(clickSound);
-		//invalidateOptionsMenu();
 
         return super.onPrepareOptionsMenu(menu);
     }
@@ -159,7 +178,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 				// TODO: Is this good enough?  Is there a status?
 				if (_speech != null) {
-					_speech.speak(_txtChar.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+					_speech.speak(getTextChar().getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
 				}
 				break;
 			default:
@@ -224,7 +243,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		taskGetChar.execute(chars);
     }
 
-	public void callback(String result) {
+	public void callbackTextChanged(String result) {
 		int defaultWordSize = 85;
 		int defaultLetterSize = 185;
 
@@ -237,11 +256,11 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			if (letterSize >= MaxCharSize) letterSize = defaultLetterSize;
 
 			// Single letters or numbers vs. words
-			_txtChar.setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 11) ? letterSize : wordSize);
-			_txtChar.setText(result);
+			getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 11) ? letterSize : wordSize);
+			getTextChar().setText(result);
 
 		} catch (Exception ex) {
-			handleError("MainActivity::callback", ex);
+			handleError("MainActivity::callbackTextChanged", ex);
 		}
 	}
 
@@ -278,4 +297,12 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			handleError("MainActivity::openSettings");
 		}
 	}
+
+	private TextView getTextChar() {
+    	if (_txtChar == null) {
+    		_txtChar = (TextView) findViewById(R.id.txt_character);
+    	}
+
+    	return _txtChar;
+    }
 }
