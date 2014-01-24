@@ -37,8 +37,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private int _seqIndex = -1;
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
   
@@ -64,8 +63,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		super.onResume();
 
 		// Apply setting changes for the action menu.
-		
-		
+		invalidateOptionsMenu();
 	}
 
 	@Override
@@ -194,7 +192,6 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 		return retVal;
     }
-    
 
     @Override
     public void onClick(View v) {
