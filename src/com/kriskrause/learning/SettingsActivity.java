@@ -28,7 +28,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
       if (item.getItemId() == android.R.id.home) {
-        NavUtils.navigateUpFromSameTask(this);
+        finish();
         return true;
       }
 
