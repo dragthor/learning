@@ -125,13 +125,6 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         return super.onPrepareOptionsMenu(menu);
     }
 
-    private void setMode(int mode) {
-		_mode = mode;
-		_seqIndex = -1;
-
-		onClick(getTextChar());
-    }
-	
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 		boolean retVal = false;
@@ -140,36 +133,36 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		// Handle presses on the action bar item  
 		switch (item.getItemId()) {
 			case R.id.action_letters:
-				setMode(0); retVal = true; break;
+				setModeAndGetNextChar(0); retVal = true; break;
 			case R.id.action_1st100:
-				setMode(1); retVal = true; break;
+				setModeAndGetNextChar(1); retVal = true; break;
 			case R.id.action_2nd100:
-				setMode(2); retVal = true; break;
+				setModeAndGetNextChar(2); retVal = true; break;
 			case R.id.action_3rd100:
-				setMode(3); retVal = true; break;
+				setModeAndGetNextChar(3); retVal = true; break;
 			case R.id.action_4th100:
-				setMode(4); retVal = true; break;
+				setModeAndGetNextChar(4); retVal = true; break;
 			case R.id.action_5th100:
-				setMode(5); retVal = true; break;
+				setModeAndGetNextChar(5); retVal = true; break;
 			case R.id.action_6th100:
-				setMode(6); retVal = true; break;
+				setModeAndGetNextChar(6); retVal = true; break;
 			case R.id.action_7th100:
-				setMode(7); retVal = true; break;
+				setModeAndGetNextChar(7); retVal = true; break;
 			case R.id.action_8th100:
-				setMode(8); retVal = true; break;
+				setModeAndGetNextChar(8); retVal = true; break;
 			case R.id.action_9th100:
-				setMode(9); retVal = true; break;
+				setModeAndGetNextChar(9); retVal = true; break;
 			case R.id.action_10th100:
-				setMode(10); retVal = true; break;
+				setModeAndGetNextChar(10); retVal = true; break;
 			case R.id.action_numbers:
-				setMode(11); retVal = true; break;
+				setModeAndGetNextChar(11); retVal = true; break;
 			case R.id.action_about:
-				openAbout();
+				openIntent(AboutActivity.class);
 				retVal = true;
 				shouldToast = false;
 				break;
 			case R.id.action_settings:
-				openSettings();
+				openIntent(SettingsActivity.class);
 				retVal = true;
 				shouldToast = false;
 				break;
@@ -267,6 +260,13 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		}
 	}
 
+    private void setModeAndGetNextChar(int mode) {
+		_mode = mode;
+		_seqIndex = -1;
+
+		onClick(getTextChar());
+    }
+	
 	private void handleError(String message) {
 		handleError(message, null);
 	}
@@ -281,23 +281,12 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		alert.show();
 	}
 
-	private void openAbout() {
+	private void openIntent(Class name) {
 		try {
-			Intent intent = new Intent(this, AboutActivity.class);
-
+			Intent intent = new Intent(this, name);
 			startActivity(intent);
 		} catch (Exception ex) {
-			handleError("MainActivity::openAbout", ex);
-		}
-	}
-
-	private void openSettings() {
-		try {
-			Intent intent = new Intent(this, SettingsActivity.class);
-
-			startActivity(intent);
-		} catch (Exception ex) {
-			handleError("MainActivity::openSettings");
+			handleError("MainActivity::openIntent", ex);
 		}
 	}
 
