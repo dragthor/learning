@@ -193,34 +193,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     public void onClick(View v) {
 		String selectionStyle = _prefs.getString("selection_style", "random");
 		CharTask taskGetChar;
-	   	String[] chars;
-
-		if (_mode == 1) {
-			chars = Data.First100;
-		} else if (_mode == 2) {
-			chars = Data.Second100;
-		} else if (_mode == 3) {
-			chars = Data.Third100;
-		} else if (_mode == 4) {
-			chars = Data.Fourth100;
-		} else if (_mode == 5) {
-			chars = Data.Fifth100;
-		} else if (_mode == 6) {
-			chars = Data.Sixth100;
-		} else if (_mode == 7) {
-			chars = Data.Seventh100;
-		} else if (_mode == 8) {
-			chars = Data.Eigth100;
-		} else if (_mode == 9) {
-			chars = Data.Ninth100;
-		} else if (_mode == 10) {
-			chars = Data.Tenth100;
-		} else if (_mode == 11) {
-			chars = Data.Numbers;
-		} else {
-			// _mode 0
-			chars = Data.Letters;
-		}
+	   	String[] chars = Data.DataArray[_mode];
 
 		if (selectionStyle.equals("random")) {
 		   taskGetChar = new UpdateRandomCharTask();
