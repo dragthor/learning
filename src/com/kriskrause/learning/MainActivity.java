@@ -35,6 +35,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private SharedPreferences _prefs;
     private TextToSpeech _speech;
     private int _seqIndex = -1;
+    private int _speechStatus = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,9 +87,12 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
     @Override
     public void onInit(int status) {
-		Toast toast;
 		String msg;
 		Resources res = getResources();
+		boolean playSound = new Boolean(_prefs.getBoolean("enable_speech", true));
+
+		_speechStatus = status;
+
 
 		if (status == TextToSpeech.SUCCESS) {
 			int result = _speech.setLanguage(Locale.US);
@@ -102,8 +106,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			msg = res.getString(R.string.speech_fail);
 		}
 
-		toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-		toast.show();
+		Log.i(MainActivity.TAG, msg);
     }
 
     @Override
@@ -117,10 +120,10 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-		boolean clickSound = new Boolean(_prefs.getBoolean("enable_speech", true));
+		boolean playSound = new Boolean(_prefs.getBoolean("enable_speech", true));
 
 		MenuItem play = menu.findItem(R.id.action_play);
-		play.setEnabled(clickSound);
+		play.setEnabled(playSound);
 
         return super.onPrepareOptionsMenu(menu);
     }
@@ -170,8 +173,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 				retVal = true;
 				shouldToast = false;
 
-				// TODO: Is this good enough?  Is there a status?
-				if (_speech != null) {
+				// Anything below zero is not good.
+				if (_speech != null && _speechStatus > -1) {
 					_speech.speak(getTextChar().getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
 				}
 				break;
