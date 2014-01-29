@@ -119,7 +119,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     public boolean onPrepareOptionsMenu(Menu menu) {
 		boolean clickSound = new Boolean(_prefs.getBoolean("enable_speech", true));
 
-		menu.getItem(0).setEnabled(clickSound);
+		MenuItem play = menu.findItem(R.id.action_play);
+		play.setEnabled(clickSound);
 
         return super.onPrepareOptionsMenu(menu);
     }
