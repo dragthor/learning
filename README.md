@@ -15,6 +15,15 @@ All 1,000 words in groups of 100, plus the alphabet (upper &amp; lower) and numb
 
 Android 4.0.3 and above.
 
+Google Play -
+
+https://play.google.com/store/apps/details?id=com.kriskrause.learning
+
+Amazon -
+
+http://www.amazon.com/Camo-Media-LLC-Reading-Buddy/dp/B00I4TPTRI/
+
+
 ![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/letter.png)
 
 ![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/word.png)
