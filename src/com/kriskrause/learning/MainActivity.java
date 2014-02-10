@@ -55,7 +55,9 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			_mode = savedInstanceState.getInt(LAST_MODE);
 			_seqIndex = savedInstanceState.getInt(LAST_SEQUENCE_POS);
 
-			callbackTextChanged(savedInstanceState.getString(LAST_DISPLAY));
+			DataItem item = new DataItem(savedInstanceState.getString(LAST_DISPLAY), "");
+
+			callbackTextChanged(item);
 		}
     }
 
@@ -209,10 +211,11 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		}
 
 		taskGetChar.setCallback(this);
-		taskGetChar.execute(chars);
+
+		taskGetChar.execute(Data.convertDataItems(chars));
     }
 
-	public void callbackTextChanged(String result) {
+	public void callbackTextChanged(DataItem result) {
 		int defaultWordSize = 85;
 		int defaultLetterSize = 185;
 
@@ -228,7 +231,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 11) ? letterSize : wordSize);
 			
 			if (result != null) {
-				getTextChar().setText(result);
+				getTextChar().setText(result.getSymbol());
 			}
 
 		} catch (Exception ex) {

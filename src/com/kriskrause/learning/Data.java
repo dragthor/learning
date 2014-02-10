@@ -1,5 +1,7 @@
 package com.kriskrause.learning;
 
+import java.util.ArrayList;
+
 public class Data {
    public static String[] Letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
       "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
@@ -115,4 +117,14 @@ public class Data {
       Tenth100,
       Numbers
    };
+
+   public static DataItem[] convertDataItems(String[] chars) {
+      ArrayList<DataItem> items = new ArrayList<DataItem>();
+
+      for (int i = 0; i < chars.length; i++) {
+         items.add(new DataItem(chars[i], ""));
+      }
+
+      return items.toArray(new DataItem[items.size()]);
+   }
 }
