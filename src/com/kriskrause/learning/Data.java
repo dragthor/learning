@@ -122,7 +122,7 @@ public class Data {
       ArrayList<DataItem> items = new ArrayList<DataItem>();
 
       for (int i = 0; i < chars.length; i++) {
-         items.add(new DataItem(chars[i], ""));
+         items.add(new DataItem(chars[i], chars[i]));
       }
 
       return items.toArray(new DataItem[items.size()]);

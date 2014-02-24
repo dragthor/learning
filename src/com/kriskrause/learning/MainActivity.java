@@ -26,11 +26,13 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     public static final String TAG = "LEARNING";
 
     private static final String LAST_DISPLAY = "LAST_DISPLAY";
+    private static final String LAST_DISPLAY_CLUE = "LAST_DISPLAY_CLUE";
     private static final String LAST_MODE = "LAST_MODE";
     private static final String LAST_SEQUENCE_POS = "LAST_SEQUENCE_POS";
 
     private static final int MaxCharSize = 500;
     private TextView _txtChar;
+    private TextView _txtClue;
     private int _mode = 0;
     private SharedPreferences _prefs;
     private TextToSpeech _speech;
@@ -55,7 +57,9 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			_mode = savedInstanceState.getInt(LAST_MODE);
 			_seqIndex = savedInstanceState.getInt(LAST_SEQUENCE_POS);
 
-			DataItem item = new DataItem(savedInstanceState.getString(LAST_DISPLAY), "");
+			DataItem item = new DataItem(
+                    savedInstanceState.getString(LAST_DISPLAY),
+                    savedInstanceState.getString(LAST_DISPLAY_CLUE));
 
 			callbackTextChanged(item);
 		}
@@ -74,6 +78,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		super.onSaveInstanceState(outState);
 
 		outState.putString(LAST_DISPLAY, getTextChar().getText().toString());
+        outState.putString(LAST_DISPLAY_CLUE, getClueTextChar().getText().toString());
 		outState.putInt(LAST_MODE, _mode);
 		outState.putInt(LAST_SEQUENCE_POS, _seqIndex);
 	}
@@ -232,6 +237,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			
 			if (result != null) {
 				getTextChar().setText(result.getSymbol());
+                getClueTextChar().setText(result.getClue());
 			}
 
 		} catch (Exception ex) {
@@ -275,5 +281,13 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     	}
 
     	return _txtChar;
+    }
+
+    private TextView getClueTextChar() {
+        if (_txtClue == null) {
+            _txtClue = (TextView) findViewById(R.id.txt_clue);
+        }
+
+        return _txtClue;
     }
 }
