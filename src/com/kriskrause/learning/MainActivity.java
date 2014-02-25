@@ -217,7 +217,11 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 		taskGetChar.setCallback(this);
 
-		taskGetChar.execute(Data.convertDataItems(chars));
+        if (_mode == 0 || _mode == 11) { // Letters, Numbers
+            taskGetChar.execute(Data.DataValues.get(_mode).toArray(new DataItem[Data.DataValues.get(_mode).size()]));
+        } else {
+		    taskGetChar.execute(Data.convertDataItems(chars));
+        }
     }
 
 	public void callbackTextChanged(DataItem result) {

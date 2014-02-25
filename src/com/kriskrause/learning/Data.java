@@ -1,6 +1,8 @@
 package com.kriskrause.learning;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Data {
    public static String[] Letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
@@ -99,11 +101,123 @@ public class Data {
    	"office", "doesn't", "underline", "church", "huge", "steel", "view"
    };
 
-   public static String[] Numbers = {
-	   "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
-   };
+    public static String[] Numbers = {
+       "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
+    };
 
-   public static String[][] DataArray = {
+    private static ArrayList<DataItem> _numbers = null;
+
+    public static ArrayList<DataItem> Numbers() {
+       if (_numbers != null) return _numbers;
+
+        _numbers = new ArrayList<DataItem>();
+
+        _numbers.add(new DataItem("1", "one"));
+        _numbers.add(new DataItem("2", "two"));
+        _numbers.add(new DataItem("3", "three"));
+        _numbers.add(new DataItem("4", "four"));
+        _numbers.add(new DataItem("5", "five"));
+        _numbers.add(new DataItem("6", "six"));
+        _numbers.add(new DataItem("7", "seven"));
+        _numbers.add(new DataItem("8", "eight"));
+        _numbers.add(new DataItem("9", "nine"));
+        _numbers.add(new DataItem("10", "ten"));
+        _numbers.add(new DataItem("11", "eleven"));
+        _numbers.add(new DataItem("12", "twelve"));
+        _numbers.add(new DataItem("13", "thirteen"));
+        _numbers.add(new DataItem("14", "fourteen"));
+        _numbers.add(new DataItem("15", "fifteen"));
+        _numbers.add(new DataItem("16", "sixteen"));
+        _numbers.add(new DataItem("17", "seventeen"));
+        _numbers.add(new DataItem("18", "eighteen"));
+        _numbers.add(new DataItem("19", "nineteen"));
+        _numbers.add(new DataItem("20", "twenty"));
+        _numbers.add(new DataItem("21", "twenty-one"));
+        _numbers.add(new DataItem("22", "twenty-two"));
+        _numbers.add(new DataItem("23", "twenty-three"));
+        _numbers.add(new DataItem("24", "twenty-four"));
+        _numbers.add(new DataItem("25", "twenty-five"));
+        _numbers.add(new DataItem("26", "twenty-six"));
+        _numbers.add(new DataItem("27", "twenty-seven"));
+        _numbers.add(new DataItem("28", "twenty-eight"));
+        _numbers.add(new DataItem("29", "twenty-nine"));
+        _numbers.add(new DataItem("30", "thirty"));
+        _numbers.add(new DataItem("31", "thiry-one"));
+
+       return _numbers;
+    }
+
+    public static HashMap<Integer, ArrayList<DataItem>> DataValues = new HashMap<Integer, ArrayList<DataItem>>()
+    {{
+        put(0, Letters());
+        put(11, Numbers());
+    }};
+
+    private static ArrayList<DataItem> _letters = null;
+
+    public static ArrayList<DataItem> Letters() {
+        if (_letters != null) return _letters;
+
+        _letters = new ArrayList<DataItem>();
+
+        _letters.add(new DataItem("A", "Apple"));
+        _letters.add(new DataItem("B", "Ball"));
+        _letters.add(new DataItem("C", "Cat"));
+        _letters.add(new DataItem("D", "Dog"));
+        _letters.add(new DataItem("E", "Elephant"));
+        _letters.add(new DataItem("F", "Fish"));
+        _letters.add(new DataItem("G", "Girl"));
+        _letters.add(new DataItem("H", "Happy"));
+        _letters.add(new DataItem("I", "Igloo"));
+        _letters.add(new DataItem("J", "Jump"));
+        _letters.add(new DataItem("K", "Kite"));
+        _letters.add(new DataItem("L", "Love"));
+        _letters.add(new DataItem("M", "Mom"));
+        _letters.add(new DataItem("N", "No"));
+        _letters.add(new DataItem("O", "Octopus"));
+        _letters.add(new DataItem("P", "Please"));
+        _letters.add(new DataItem("Q", "Quilt"));
+        _letters.add(new DataItem("R", "Rainbow"));
+        _letters.add(new DataItem("S", "Sun"));
+        _letters.add(new DataItem("T", "Turtle"));
+        _letters.add(new DataItem("U", "Umbrella"));
+        _letters.add(new DataItem("V", "Vase"));
+        _letters.add(new DataItem("W", "Worm"));
+        _letters.add(new DataItem("X", "X-ray"));
+        _letters.add(new DataItem("Y", "Yarn"));
+        _letters.add(new DataItem("Z", "Zebra"));
+
+        _letters.add(new DataItem("a", "apple"));
+        _letters.add(new DataItem("b", "ball"));
+        _letters.add(new DataItem("c", "cat"));
+        _letters.add(new DataItem("d", "dog"));
+        _letters.add(new DataItem("e", "elephant"));
+        _letters.add(new DataItem("f", "fish"));
+        _letters.add(new DataItem("g", "girl"));
+        _letters.add(new DataItem("h", "happy"));
+        _letters.add(new DataItem("i", "igloo"));
+        _letters.add(new DataItem("j", "jump"));
+        _letters.add(new DataItem("k", "kite"));
+        _letters.add(new DataItem("l", "love"));
+        _letters.add(new DataItem("m", "mom"));
+        _letters.add(new DataItem("n", "no"));
+        _letters.add(new DataItem("o", "octopus"));
+        _letters.add(new DataItem("p", "please"));
+        _letters.add(new DataItem("q", "quilt"));
+        _letters.add(new DataItem("r", "rainbow"));
+        _letters.add(new DataItem("s", "sun"));
+        _letters.add(new DataItem("t", "turtle"));
+        _letters.add(new DataItem("u", "umbrella"));
+        _letters.add(new DataItem("v", "vase"));
+        _letters.add(new DataItem("w", "worm"));
+        _letters.add(new DataItem("x", "x-ray"));
+        _letters.add(new DataItem("y", "yarn"));
+        _letters.add(new DataItem("z", "zebra"));
+
+        return _letters;
+    }
+
+    public static String[][] DataArray = {
       Letters,
       First100,
       Second100,
