@@ -30,4 +30,8 @@
     <string name="language_unsupported">Language not supported ...</string>
     <string name="speech_ready">Speech ready ...</string>
     <string name="speech_fail">Speech init failed ...</string>
+
+    <string name="action_english">English</string>
+    <string name="action_mandarin">Mandarin</string>
+    <string name="action_1st_char_mandarin">Level 1</string>
 </resources>

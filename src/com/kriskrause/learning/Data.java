@@ -105,6 +105,87 @@ public class Data {
        "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
     };
 
+    public static String[] First100TwoCharMandarinSimple = { };
+
+    private static ArrayList<DataItem> _first100TwoCharMandarinSimple = null;
+
+    public static ArrayList<DataItem> First100TwoCharMandarinSimple() {
+        if (_first100TwoCharMandarinSimple != null) return _first100TwoCharMandarinSimple;
+
+        _first100TwoCharMandarinSimple = new ArrayList<DataItem>();
+
+        _first100TwoCharMandarinSimple.add(new DataItem("的", "(possessive particle)/of, really and truly, aim/clear"));
+        _first100TwoCharMandarinSimple.add(new DataItem("一", "one/1/single/a(n)"));
+        _first100TwoCharMandarinSimple.add(new DataItem("是", "is/are/am/yes/to be"));
+        _first100TwoCharMandarinSimple.add(new DataItem("不", "(negative prefix)/not/no"));
+        _first100TwoCharMandarinSimple.add(new DataItem("了", "(modal particle intensifying preceding clause)/(completed action marker), to know/to understand/to know, clear, look afar from a high place"));
+
+        return _first100TwoCharMandarinSimple;
+    }
+
+    public static String[] NumbersMandarinSimple = { };
+
+    private static ArrayList<DataItem> _numbersMandarinSimple = null;
+
+    public static ArrayList<DataItem> NumbersMandarinSimple() {
+        if (_numbersMandarinSimple != null) return _numbersMandarinSimple;
+
+        _numbersMandarinSimple = new ArrayList<DataItem>();
+
+        _numbersMandarinSimple.add(new DataItem("一", "1"));
+        _numbersMandarinSimple.add(new DataItem("二", "2"));
+        _numbersMandarinSimple.add(new DataItem("三", "3"));
+        _numbersMandarinSimple.add(new DataItem("四", "4"));
+        _numbersMandarinSimple.add(new DataItem("五", "5"));
+        _numbersMandarinSimple.add(new DataItem("六", "6"));
+        _numbersMandarinSimple.add(new DataItem("七", "7"));
+        _numbersMandarinSimple.add(new DataItem("八", "8"));
+        _numbersMandarinSimple.add(new DataItem("九", "9"));
+        _numbersMandarinSimple.add(new DataItem("十", "10"));
+        _numbersMandarinSimple.add(new DataItem("十一", "11"));
+        _numbersMandarinSimple.add(new DataItem("十二", "12"));
+        _numbersMandarinSimple.add(new DataItem("十三", "13"));
+        _numbersMandarinSimple.add(new DataItem("十四", "14"));
+        _numbersMandarinSimple.add(new DataItem("十五", "15"));
+        _numbersMandarinSimple.add(new DataItem("十六", "16"));
+        _numbersMandarinSimple.add(new DataItem("十七", "17"));
+        _numbersMandarinSimple.add(new DataItem("十八", "18"));
+        _numbersMandarinSimple.add(new DataItem("十九", "19"));
+        _numbersMandarinSimple.add(new DataItem("二十", "20"));
+        _numbersMandarinSimple.add(new DataItem("二十一", "21"));
+        _numbersMandarinSimple.add(new DataItem("二十二", "22"));
+        _numbersMandarinSimple.add(new DataItem("二十三", "23"));
+        _numbersMandarinSimple.add(new DataItem("二十四", "24"));
+        _numbersMandarinSimple.add(new DataItem("二十五", "25"));
+        _numbersMandarinSimple.add(new DataItem("二十六", "26"));
+        _numbersMandarinSimple.add(new DataItem("二十七", "27"));
+        _numbersMandarinSimple.add(new DataItem("二十八", "28"));
+        _numbersMandarinSimple.add(new DataItem("二十九", "29"));
+        _numbersMandarinSimple.add(new DataItem("三十", "30"));
+        _numbersMandarinSimple.add(new DataItem("三十一", "31"));
+        _numbersMandarinSimple.add(new DataItem("三十二", "32"));
+        _numbersMandarinSimple.add(new DataItem("三十三", "33"));
+        _numbersMandarinSimple.add(new DataItem("三十四", "34"));
+        _numbersMandarinSimple.add(new DataItem("三十五", "35"));
+        _numbersMandarinSimple.add(new DataItem("三十六", "36"));
+        _numbersMandarinSimple.add(new DataItem("三十七", "37"));
+        _numbersMandarinSimple.add(new DataItem("三十八", "38"));
+        _numbersMandarinSimple.add(new DataItem("三十九", "39"));
+        _numbersMandarinSimple.add(new DataItem("四十", "40"));
+        _numbersMandarinSimple.add(new DataItem("四十一", "41"));
+        _numbersMandarinSimple.add(new DataItem("四十二", "42"));
+        _numbersMandarinSimple.add(new DataItem("四十三", "43"));
+        _numbersMandarinSimple.add(new DataItem("四十四", "44"));
+        _numbersMandarinSimple.add(new DataItem("四十五", "45"));
+        _numbersMandarinSimple.add(new DataItem("四十六", "46"));
+        _numbersMandarinSimple.add(new DataItem("四十七", "47"));
+        _numbersMandarinSimple.add(new DataItem("四十八", "48"));
+        _numbersMandarinSimple.add(new DataItem("四十九", "49"));
+        _numbersMandarinSimple.add(new DataItem("五十", "50"));
+
+        return _numbersMandarinSimple;
+    }
+
     private static ArrayList<DataItem> _numbers = null;
 
     public static ArrayList<DataItem> Numbers() {
@@ -151,6 +232,8 @@ public class Data {
     {{
         put(0, Letters());
         put(11, Numbers());
+        put(12, NumbersMandarinSimple());
+        put(13, First100TwoCharMandarinSimple());
     }};
 
     private static ArrayList<DataItem> _letters = null;
@@ -229,7 +312,9 @@ public class Data {
       Eigth100,
       Ninth100,
       Tenth100,
-      Numbers
+      Numbers,
+      NumbersMandarinSimple,
+      First100TwoCharMandarinSimple
    };
 
    public static DataItem[] convertDataItems(String[] chars) {

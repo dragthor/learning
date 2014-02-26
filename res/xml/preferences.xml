@@ -52,7 +52,16 @@
     android:inputType="number"
     android:summary="Sets the font size for words"
     android:numeric="integer"
-/>  
+/>
+
+        <SwitchPreference
+            android:key="enable_clue"
+            android:summary="Enable or disable clue"
+            android:title="Enable Clue"
+            android:defaultValue="true"
+            android:switchTextOn="On"
+            android:switchTextOff="Off"
+            />
 
     </PreferenceCategory>
     

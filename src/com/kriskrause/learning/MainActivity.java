@@ -49,9 +49,11 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		_speech = new TextToSpeech(this, this);
 
 		getTextChar().setOnClickListener(this);
+        getClueTextChar().setOnClickListener(this);
 
 		// Disable tap click sound.
 		getTextChar().setSoundEffectsEnabled(false);
+        getClueTextChar().setSoundEffectsEnabled(false);
 
 		if (savedInstanceState != null) {
 			_mode = savedInstanceState.getInt(LAST_MODE);
@@ -99,7 +101,6 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		boolean playSound = new Boolean(_prefs.getBoolean("enable_speech", true));
 
 		_speechStatus = status;
-
 
 		if (status == TextToSpeech.SUCCESS) {
 			int result = _speech.setLanguage(Locale.US);
@@ -166,6 +167,10 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 				setModeAndGetNextChar(10); retVal = true; break;
 			case R.id.action_numbers:
 				setModeAndGetNextChar(11); retVal = true; break;
+            case R.id.action_numbers_mandarin:
+                setModeAndGetNextChar(12); retVal = true; break;
+            case R.id.action_1st_char_mandarin:
+                setModeAndGetNextChar(13); retVal = true; break;
 			case R.id.action_about:
 				openIntent(AboutActivity.class);
 				retVal = true;
@@ -217,7 +222,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 		taskGetChar.setCallback(this);
 
-        if (_mode == 0 || _mode == 11) { // Letters, Numbers
+        if (_mode == 0 || _mode > 10) { // Letters, Numbers, Mandarin
             taskGetChar.execute(Data.DataValues.get(_mode).toArray(new DataItem[Data.DataValues.get(_mode).size()]));
         } else {
 		    taskGetChar.execute(Data.convertDataItems(chars));
@@ -237,7 +242,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			if (letterSize >= MaxCharSize) letterSize = defaultLetterSize;
 
 			// Single letters or numbers vs. words
-			getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 11) ? letterSize : wordSize);
+			getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode > 10) ? letterSize : wordSize);
 			
 			if (result != null) {
 				getTextChar().setText(result.getSymbol());

@@ -9,21 +9,33 @@
 
  <item android:id="@+id/action_parent" android:title="@string/action_parent" android:showAsAction="never"
 	   android:icon="@drawable/ic_action_sort_by_size">
-	<menu>
- 	  <item android:id="@+id/action_letters" android:title="@string/action_letters" android:showAsAction="never" />
- 	  <item android:id="@+id/action_numbers" android:title="@string/action_numbers" android:showAsAction="never" />
 
- 	  <item android:id="@+id/action_1st100" android:title="@string/action_1st100" android:showAsAction="never" /> 
- 	  <item android:id="@+id/action_2nd100" android:title="@string/action_2nd100" android:showAsAction="never" />  
- 	  <item android:id="@+id/action_3rd100" android:title="@string/action_3rd100" android:showAsAction="never" />  
- 	  <item android:id="@+id/action_4th100" android:title="@string/action_4th100" android:showAsAction="never" />  
- 	  <item android:id="@+id/action_5th100" android:title="@string/action_5th100" android:showAsAction="never" />  
- 	  <item android:id="@+id/action_6th100" android:title="@string/action_6th100" android:showAsAction="never" />  
- 	  <item android:id="@+id/action_7th100" android:title="@string/action_7th100" android:showAsAction="never" />  
- 	  <item android:id="@+id/action_8th100" android:title="@string/action_8th100" android:showAsAction="never" />  
- 	  <item android:id="@+id/action_9th100" android:title="@string/action_9th100" android:showAsAction="never" />  
- 	  <item android:id="@+id/action_10th100" android:title="@string/action_10th100" android:showAsAction="never" />  
-	</menu>
+    <menu>
+    <item android:id="@+id/action_language_english" android:title="@string/action_english" android:showAsAction="never">
+        <menu>
+          <item android:id="@+id/action_letters" android:title="@string/action_letters" android:showAsAction="never" />
+          <item android:id="@+id/action_numbers" android:title="@string/action_numbers" android:showAsAction="never" />
+
+          <item android:id="@+id/action_1st100" android:title="@string/action_1st100" android:showAsAction="never" />
+          <item android:id="@+id/action_2nd100" android:title="@string/action_2nd100" android:showAsAction="never" />
+          <item android:id="@+id/action_3rd100" android:title="@string/action_3rd100" android:showAsAction="never" />
+          <item android:id="@+id/action_4th100" android:title="@string/action_4th100" android:showAsAction="never" />
+          <item android:id="@+id/action_5th100" android:title="@string/action_5th100" android:showAsAction="never" />
+          <item android:id="@+id/action_6th100" android:title="@string/action_6th100" android:showAsAction="never" />
+          <item android:id="@+id/action_7th100" android:title="@string/action_7th100" android:showAsAction="never" />
+          <item android:id="@+id/action_8th100" android:title="@string/action_8th100" android:showAsAction="never" />
+          <item android:id="@+id/action_9th100" android:title="@string/action_9th100" android:showAsAction="never" />
+          <item android:id="@+id/action_10th100" android:title="@string/action_10th100" android:showAsAction="never" />
+        </menu>
+     </item>
+
+    <item android:id="@+id/action_language_mandarin" android:title="@string/action_mandarin" android:showAsAction="never">
+        <menu>
+            <item android:id="@+id/action_numbers_mandarin" android:title="@string/action_numbers" android:showAsAction="never" />
+            <item android:id="@+id/action_1st_char_mandarin" android:title="@string/action_1st_char_mandarin" android:showAsAction="never" />
+        </menu>
+    </item>
+    </menu>
 </item>
 
  <item android:id="@+id/action_about" android:title="@string/action_about" android:showAsAction="never" android:icon="@drawable/ic_action_about" /> 
