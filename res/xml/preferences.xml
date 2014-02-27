@@ -11,8 +11,8 @@
             android:summary="Enable or disable speech"
             android:title="Enable Speech" 
             android:defaultValue="true"
-            android:switchTextOn="On"
-	    android:switchTextOff="Off"
+            android:switchTextOn="Yes"
+	    android:switchTextOff="No"
 	/>
 
 	<Preference android:title="Voice &amp; Speech Settings"
@@ -37,7 +37,7 @@
         />   
 
 <EditTextPreference 
-    android:defaultValue="185" 
+    android:defaultValue="175"
     android:key="letterSize" 
     android:title="Letter &amp; Number Font Size"
     android:inputType="number"
@@ -46,7 +46,7 @@
     />  
 
 <EditTextPreference 
-    android:defaultValue="85" 
+    android:defaultValue="75"
     android:key="wordSize" 
     android:title="Word Font Size" 
     android:inputType="number"
@@ -56,11 +56,11 @@
 
         <SwitchPreference
             android:key="enable_clue"
-            android:summary="Enable or disable clue"
-            android:title="Enable Clue"
+            android:summary="Show or hide clue"
+            android:title="Show Clue"
             android:defaultValue="true"
-            android:switchTextOn="On"
-            android:switchTextOff="Off"
+            android:switchTextOn="Yes"
+            android:switchTextOff="No"
             />
 
     </PreferenceCategory>

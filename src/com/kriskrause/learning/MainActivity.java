@@ -230,8 +230,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     }
 
 	public void callbackTextChanged(DataItem result) {
-		int defaultWordSize = 85;
-		int defaultLetterSize = 185;
+		int defaultWordSize = 75;
+		int defaultLetterSize = 175;
 
 		try {
 

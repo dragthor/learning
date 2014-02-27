@@ -1,61 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView
+
+<com.kriskrause.learning.AutofitTextView
     android:gravity="center"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="@string/app_name"
-    android:textSize="40sp"
+    android:textSize="50sp"
+    custom:minTextSize="20sp"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
     />
 
-<TextView
+<com.kriskrause.learning.AutofitTextView
     android:gravity="center"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="@string/app_version"
-    android:textSize="20sp"
+    android:textSize="30sp"
+    custom:minTextSize="20sp"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
 />
 
-<TextView
+<com.kriskrause.learning.AutofitTextView
     android:gravity="center"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="GPL v2"
-    android:textSize="20sp"
+    android:textSize="30sp"
+    custom:minTextSize="20sp"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
 />
 
 <View android:layout_height="4dip" android:layout_width="fill_parent" />
 
-<TextView
+<com.kriskrause.learning.AutofitTextView
    android:gravity="center"
-   android:layout_width="fill_parent"
+   android:layout_width="match_parent"
    android:layout_height="wrap_content"
    android:text="kris.krause@gmail.com"
-   android:textSize="20sp"
-   android:autoLink="email"   
+   android:textSize="30sp"
+   android:autoLink="email"
+   custom:minTextSize="20sp"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
 />
 
 <View android:layout_height="4dip" android:layout_width="fill_parent" />
 
-<TextView
+<com.kriskrause.learning.AutofitTextView
    android:gravity="center"
-   android:layout_width="fill_parent"
+   android:layout_width="match_parent"
    android:layout_height="wrap_content"
-   android:textSize="15sp"
+   android:textSize="25sp"
    android:text="Source code &amp; more visit -"
+   custom:minTextSize="15sp"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
 />
 
-<TextView
+<com.kriskrause.learning.AutofitTextView
    android:gravity="center"
-   android:layout_width="fill_parent"
+   android:layout_width="match_parent"
    android:layout_height="wrap_content"
    android:text="https://github.com/dragthor/learning"
-   android:textSize="15sp"
-   android:autoLink="web"   
+   android:textSize="25sp"
+   android:autoLink="web"
+   custom:minTextSize="15sp"
+   android:layout_marginLeft="5sp"
+   android:layout_marginRight="5sp"
 />
 
 </LinearLayout>
