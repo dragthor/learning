@@ -18,8 +18,12 @@ import android.preference.PreferenceManager;
 import android.app.AlertDialog;
 import android.widget.Toast;
 import android.speech.tts.TextToSpeech;
+
+import java.lang.Exception;
+import java.lang.Integer;
 import java.util.Locale;
 import android.content.res.Resources;
+import java.util.ArrayList;
 
 public class MainActivity extends Activity implements OnClickListener, ICallbackListener, TextToSpeech.OnInitListener
 {
@@ -145,32 +149,28 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		switch (item.getItemId()) {
 			case R.id.action_letters:
 				setModeAndGetNextChar(0); retVal = true; break;
-			case R.id.action_1st100:
-				setModeAndGetNextChar(1); retVal = true; break;
-			case R.id.action_2nd100:
+            case R.id.action_numbers:
+                setModeAndGetNextChar(1); retVal = true; break;
+			/* case R.id.action_1st100:
 				setModeAndGetNextChar(2); retVal = true; break;
-			case R.id.action_3rd100:
+			case R.id.action_2nd100:
 				setModeAndGetNextChar(3); retVal = true; break;
-			case R.id.action_4th100:
+			case R.id.action_3rd100:
 				setModeAndGetNextChar(4); retVal = true; break;
-			case R.id.action_5th100:
+			case R.id.action_4th100:
 				setModeAndGetNextChar(5); retVal = true; break;
-			case R.id.action_6th100:
+			case R.id.action_5th100:
 				setModeAndGetNextChar(6); retVal = true; break;
-			case R.id.action_7th100:
+			case R.id.action_6th100:
 				setModeAndGetNextChar(7); retVal = true; break;
-			case R.id.action_8th100:
+			case R.id.action_7th100:
 				setModeAndGetNextChar(8); retVal = true; break;
-			case R.id.action_9th100:
+			case R.id.action_8th100:
 				setModeAndGetNextChar(9); retVal = true; break;
-			case R.id.action_10th100:
+			case R.id.action_9th100:
 				setModeAndGetNextChar(10); retVal = true; break;
-			case R.id.action_numbers:
-				setModeAndGetNextChar(11); retVal = true; break;
-            case R.id.action_numbers_mandarin:
-                setModeAndGetNextChar(12); retVal = true; break;
-            case R.id.action_1st_char_mandarin:
-                setModeAndGetNextChar(13); retVal = true; break;
+			case R.id.action_10th100:
+				setModeAndGetNextChar(11); retVal = true; break; */
 			case R.id.action_about:
 				openIntent(AboutActivity.class);
 				retVal = true;
@@ -208,24 +208,28 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     public void onClick(View v) {
 		String selectionStyle = _prefs.getString("selection_style", "random");
 		CharTask taskGetChar;
-	   	String[] chars = Data.DataArray[_mode];
 
-		if (selectionStyle.equals("random")) {
-		   taskGetChar = new UpdateRandomCharTask();
-		} else {
-		   _seqIndex++;
+        try {
+            IData language = new EnglishData();
+            ArrayList<DataItem> data = language.getItems(_mode);
 
-		   if (_seqIndex >= chars.length) _seqIndex = 0;
+            if (data == null) return;
 
-		   taskGetChar = new UpdateSequentialCharTask(_seqIndex);
-		}
+            if (selectionStyle.equals("random")) {
+               taskGetChar = new UpdateRandomCharTask();
+            } else {
+               _seqIndex++;
 
-		taskGetChar.setCallback(this);
+               if (_seqIndex >= data.size()) _seqIndex = 0;
 
-        if (_mode == 0 || _mode > 10) { // Letters, Numbers, Mandarin
-            taskGetChar.execute(Data.DataValues.get(_mode).toArray(new DataItem[Data.DataValues.get(_mode).size()]));
-        } else {
-		    taskGetChar.execute(Data.convertDataItems(chars));
+               taskGetChar = new UpdateSequentialCharTask(_seqIndex);
+            }
+
+            taskGetChar.setCallback(this);
+
+            taskGetChar.execute(data.toArray(new DataItem[data.size()]));
+        } catch (Exception ex) {
+            handleError("MainActivity::onClick", ex);
         }
     }
 
@@ -242,7 +246,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			if (letterSize >= MaxCharSize) letterSize = defaultLetterSize;
 
 			// Single letters or numbers vs. words
-			getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode > 10) ? letterSize : wordSize);
+			getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 1) ? letterSize : wordSize);
 			
 			if (result != null) {
 				getTextChar().setText(result.getSymbol());
