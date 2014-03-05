@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView
+
+<com.kriskrause.learning.AutofitTextView
     android:id="@+id/txt_character"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,9 +14,12 @@
     android:layout_weight="8"
     android:layout_gravity="center"
     android:gravity="center"
+    custom:minTextSize="75sp"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
     />
 
-    <TextView
+    <com.kriskrause.learning.AutofitTextView
         android:id="@+id/txt_clue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,6 +27,9 @@
         android:layout_weight="2"
         android:layout_gravity="center"
         android:gravity="center"
+        custom:minTextSize="10sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
         />
 </LinearLayout>
 

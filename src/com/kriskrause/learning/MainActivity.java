@@ -179,7 +179,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			case R.id.action_settings:
 				openIntent(SettingsActivity.class);
 				retVal = true;
-				shouldToast = false;
+				shouldToast = false;boolean enableClue = new Boolean(_prefs.getBoolean("enable_clue", true));
 				break;
 			case R.id.action_play:
 				retVal = true;
@@ -249,7 +249,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			if (letterSize >= MaxCharSize) letterSize = defaultLetterSize;
 
 			// Single letters or numbers vs. words
-			getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 1) ? letterSize : wordSize);
+            // Auto resize
+			// getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 1) ? letterSize : wordSize);
 			
 			if (result != null) {
 				getTextChar().setText(result.getSymbol());
