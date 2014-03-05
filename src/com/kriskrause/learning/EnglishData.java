@@ -4,49 +4,55 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
-public class EnglishData implements IData {
+public final class EnglishData implements IData {
+    private final HashMap<Integer, ArrayList<DataItem>> _values;
+
+    public EnglishData() {
+        _values = new HashMap<Integer, ArrayList<DataItem>>();
+
+        _values.put(0, Letters());
+        _values.put(1, Numbers());
+        _values.put(2, convertToDataItems(First100));
+        _values.put(3, convertToDataItems(Second100));
+        _values.put(4, convertToDataItems(Third100));
+        _values.put(5, convertToDataItems(Fourth100));
+        _values.put(6, convertToDataItems(Fifth100));
+        _values.put(7, convertToDataItems(Sixth100));
+        _values.put(8, convertToDataItems(Seventh100));
+        _values.put(9, convertToDataItems(Eigth100));
+        _values.put(10, convertToDataItems(Ninth100));
+        _values.put(11, convertToDataItems(Tenth100));
+    }
 
     public ArrayList<DataItem> getItems(Integer keyIndex) {
         if (keyIndex <= 0) { // Default letters.
-            return DataValues.get(0);
+            return _values.get(0);
         }
 
-        if (keyIndex > DataValues.size()) { // Default letters.
-            return DataValues.get(0);
+        if (keyIndex > _values.size()) { // Default letters.
+            return _values.get(0);
         }
 
-        return DataValues.get(keyIndex);
+        if (_values.containsKey(keyIndex)) {
+            return _values.get(keyIndex);
+        }
+
+        return _values.get(0); // Default letters.
     }
 
-    private static HashMap<Integer, ArrayList<DataItem>> DataValues = new HashMap<Integer, ArrayList<DataItem>>()
-    {{
-            put(0, Letters());
-            put(1, Numbers());
-            /* put(2, convertToDataItems(First100));
-            put(3, convertToDataItems(Second100));
-            put(4, convertToDataItems(Third100));
-            put(5, convertToDataItems(Fourth100));
-            put(6, convertToDataItems(Fifth100));
-            put(7, convertToDataItems(Sixth100));
-            put(8, convertToDataItems(Seventh100));
-            put(9, convertToDataItems(Eigth100));
-            put(10, convertToDataItems(Ninth100));
-            put(11, convertToDataItems(Tenth100)); */
-    }};
-
-    private static ArrayList<DataItem> convertToDataItems(String[] chars) {
+    private ArrayList<DataItem> convertToDataItems(String[] chars) {
         ArrayList<DataItem> items = new ArrayList<DataItem>();
 
         for (int i = 0; i < chars.length; i++) {
-            items.add(new DataItem(chars[i], chars[i]));
+            items.add(new DataItem(chars[i], ""));
         }
 
         return items;
     }
 
-    private static ArrayList<DataItem> _numbers = null;
+    private ArrayList<DataItem> _numbers = null;
 
-    private static ArrayList<DataItem> Numbers() {
+    private ArrayList<DataItem> Numbers() {
         if (_numbers != null) return _numbers;
 
         _numbers = new ArrayList<DataItem>();
@@ -86,9 +92,9 @@ public class EnglishData implements IData {
         return _numbers;
     }
 
-    private static ArrayList<DataItem> _letters = null;
+    private ArrayList<DataItem> _letters = null;
 
-    private static ArrayList<DataItem> Letters() {
+    private ArrayList<DataItem> Letters() {
         if (_letters != null) return _letters;
 
         _letters = new ArrayList<DataItem>();
@@ -150,7 +156,7 @@ public class EnglishData implements IData {
         return _letters;
     }
 
-    private static String[] First100 = { "the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", "for", "on", "are", "as",
+    private final String[] First100 = { "the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", "for", "on", "are", "as",
             "with", "his", "they", "I", "at", "be", "this", "have", "from",
             "or", "one", "had", "by", "word", "but", "not", "what", "all", "were", "we", "when", "your", "can", "said", "there", "use",
             "an", "each", "which", "she", "do", "how", "their", "if", "will","up", "other", "about", "out", "many", "then", "them", "these",
@@ -159,7 +165,7 @@ public class EnglishData implements IData {
             "long", "down", "day", "did", "get", "come", "made", "may", "part"
     };
 
-    private static String[] Second100 = { "over", "new", "sound", "take", "only", "little", "work", "know", "place", "year", "live", "me", "back",
+    private final String[] Second100 = { "over", "new", "sound", "take", "only", "little", "work", "know", "place", "year", "live", "me", "back",
             "give", "most", "very", "after", "thing", "our", "just", "name", "good", "sentence", "man", "think", "say", "great", "where", "help",
             "through", "much", "before", "line", "right", "too", "mean", "old", "any", "same", "tell", "boy", "follow", "came", "want", "show",
             "also", "around", "form", "three", "small", "set", "put", "end", "does", "another", "well", "large", "must", "big", "even", "such",
@@ -168,7 +174,7 @@ public class EnglishData implements IData {
             "found", "study", "still", "learn", "should", "America", "world"
     };
 
-    private static String[] Third100 = { "high", "every", "near", "add", "food", "between", "own", "below", "country", "plant", "last", "school", "father",
+    private final String[] Third100 = { "high", "every", "near", "add", "food", "between", "own", "below", "country", "plant", "last", "school", "father",
             "keep", "tree", "never", "start", "city", "earth", "eye", "light", "thought", "head", "under", "story", "saw", "left", "don’t", "few", "while", "along",
             "might", "close", "something", "seem", "nest", "hard", "open", "example", "begin", "life", "always", "those", "both", "paper", "together", "got", "group",
             "often", "run", "important", "until", "children", "side", "feet", "car", "mile", "night", "walk", "white", "sea", "began", "grow", "took", "river", "four",
@@ -176,7 +182,7 @@ public class EnglishData implements IData {
             "almost", "let", "above", "girl", "sometimes", "mountain", "cut", "young", "talk", "soon", "list", "song", "begin", "leave", "family", "it's"
     };
 
-    private static String[] Fourth100 = {
+    private final String[] Fourth100 = {
             "body", "order", "listen", "farm", "music", "red", "wind", "pulled", "color", "door", "rock", "draw", "stand", "sure", "space", "voice", "sun", "become", "covered",
             "seen", "questions", "top", "fast", "cold", "fish", "ship", "several", "cried", "area", "across", "hold", "plan", "mark", "today", "himself", "notice", "dog",
             "during", "toward", "south", "horse", "short", "five", "sing", "birds", "better", "step", "war", "problem", "best", "morning", "ground", "complete", "however",
@@ -185,7 +191,7 @@ public class EnglishData implements IData {
             "friends", "early", "slowly", "wood", "easy", "waves", "money", "fire", "heard", "reached", "map", "upon"
     };
 
-    private static String[] Fifth100 = {
+    private final String[] Fifth100 = {
             "done", "decided", "plane", "filled", "English", "contain", " system", "heat", "road", "course", "behind", "full", "half", "surface", "ran", "hot", "ten",
             "produce", "round", "check", "fly", "building", "boat", "object", "gave", "ocean", "game", "am", "box", "class", "force", "rule", "finally", "note",
             "brought", "among", "wait", "nothing", "understand", "noun", "correct", "rest", "warm", "power", "oh", "carefully", "common", "cannot", "quickly",
@@ -195,7 +201,7 @@ public class EnglishData implements IData {
             "government", "built"
     };
 
-    private static String[] Sixth100 = {
+    private final String[] Sixth100 = {
             "can't", "picked", "legs", "beside", "matter", "simple", "sat", "gone", "square", "cells", "main", "sky", "syllables", "paint", "winter", "grass", "perhaps",
             "mind", "wide", "million", "bill", "love", "written", "west", "felt", "cause", "length", "lay", "suddenly", "rain", "reason", "weather", "test", "exercise",
             "kept", "root", "direction", "eggs", "interest", "instruments", "center", "train", "arms", "meet", "farmers", "blue", "brother", "third", "ready", "wish",
@@ -205,7 +211,7 @@ public class EnglishData implements IData {
             "members", "probably", "happy", "drive"
     };
 
-    private static String[] Seventh100 = {
+    private final String[] Seventh100 = {
             "cross", "already", "hair", "rolled", "speak", "instead", "age", "bear", "solve", "phrase", "amount", "wonder", "appear", "soil", "scale", "smiled", "metal",
             "bed", "pounds", "angle", "son", "copy", "although", "fraction", "either", "free", "per", "Africa", "ice", "hope", "broken", "killed", "sleep", "spring", "moment",
             "melody", "village", "case", "tiny", "bottom", "factors", "laughed", "possible", "trip", "result", "nation", "gold", "hole", "jumped", "quite", "milk", "poor",
@@ -214,7 +220,7 @@ public class EnglishData implements IData {
             "dress", "outside", "iron", "consonant", "cat", "everything", "within", "someone", "couldn't", "tall", "dictionary", "sail", "fingers"
     };
 
-    private static String[] Eigth100 = {
+    private final String[] Eigth100 = {
             "row", "president", "yourself", "caught", "least", "brown", "control", "fell", "catch", "trouble", "practice", "team", "climbed", "cool", "report", "God", "wrote", "cloud",
             "straight", "captain", "shouted", "lost", "rise", "direct", "continued", "sent", "statement", "ring", "itself", "symbols", "stick", "serve", "else", "wear", "party", "child",
             "plains", "bad", "seeds", "desert", "gas", "save", "suppose", "increase", "England", "experiment", "woman", "history", "burning", "engine", "coast", "cost", "design", "alone",
@@ -223,7 +229,7 @@ public class EnglishData implements IData {
             "human", "cents", "equal", "please", "art", "key", "decimal", "strange", "feeling"
     };
 
-    private static String[] Ninth100 = {
+    private final String[] Ninth100 = {
             "supply", "guess", "thick", "major", "corner", "silent", "blood", "observe", "electric", "trade", "lie", "tube", "insects", "rather", "spot", "necessary", "crops", "compare",
             "bell", "weight", "tone", "crowd", "fun", "meat", "hit", "poem", "loud", "lifted", "sand", "enjoy", "consider", "process", "doctor", "elements", "suggested", "army", "provide",
             "indicate", "thin", "hat", "thus", "except", "position", "property", "won't", "expect", "entered", "particular", "cook", "flat", "fruit", "swim", "bones", "seven", "tied", "terms",
@@ -232,7 +238,7 @@ public class EnglishData implements IData {
             "exciting", "eight", "wife", "soldiers", "branches", "science", "sharp"
     };
 
-    private static String[] Tenth100 = {
+    private final String[] Tenth100 = {
             "company", "sister", "gun", "total", "radio", "oxygen", "similar", "deal", "we'll", "plural", "death", "determine", "action", "various", "score", "evening", "capital", "agreed", "forward",
             "hoe", "factories", "opposite", "stretched", "rope", "settled", "wrong", "experience", "cotton", "yellow", "chart", "rose", "apple", "isn't", "prepared", "allow", "details", "southern",
             "pretty", "fear", "entire", "truck", "solution", "workers", "corn", "fair", "fresh", "Washington", "substances", "printed", "shop", "Greek", "smell", "wouldn't", "suffix", "women",

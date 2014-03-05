@@ -145,13 +145,14 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		boolean retVal = false;
 		boolean shouldToast = true;
 
-		// Handle presses on the action bar item  
+		// Handle presses on the action bar item.  I would like this to be
+        // more elegant... as in.. have a convention... menu index = data index?
 		switch (item.getItemId()) {
 			case R.id.action_letters:
 				setModeAndGetNextChar(0); retVal = true; break;
             case R.id.action_numbers:
                 setModeAndGetNextChar(1); retVal = true; break;
-			/* case R.id.action_1st100:
+			case R.id.action_1st100:
 				setModeAndGetNextChar(2); retVal = true; break;
 			case R.id.action_2nd100:
 				setModeAndGetNextChar(3); retVal = true; break;
@@ -170,7 +171,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			case R.id.action_9th100:
 				setModeAndGetNextChar(10); retVal = true; break;
 			case R.id.action_10th100:
-				setModeAndGetNextChar(11); retVal = true; break; */
+				setModeAndGetNextChar(11); retVal = true; break;
 			case R.id.action_about:
 				openIntent(AboutActivity.class);
 				retVal = true;
