@@ -18,7 +18,6 @@ import android.preference.PreferenceManager;
 import android.app.AlertDialog;
 import android.widget.Toast;
 import android.speech.tts.TextToSpeech;
-
 import java.lang.Exception;
 import java.lang.Integer;
 import java.util.Locale;
@@ -209,10 +208,13 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     public void onClick(View v) {
 		String selectionStyle = _prefs.getString("selection_style", "random");
 		CharTask taskGetChar;
+        IData language;
+        ArrayList<DataItem> data;
 
         try {
-            IData language = new EnglishData();
-            ArrayList<DataItem> data = language.getItems(_mode);
+            // Change to factory eventually depending on multi-language support.
+            language = new EnglishData();
+            data = language.getItems(_mode);
 
             if (data == null) return;
 
@@ -239,7 +241,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		int defaultLetterSize = 175;
 
 		try {
-
+            boolean enableClue = new Boolean(_prefs.getBoolean("enable_clue", true));
 			int wordSize = Integer.parseInt(_prefs.getString("wordSize",  Integer.toString(defaultWordSize)));
 			int letterSize = Integer.parseInt(_prefs.getString("letterSize",  Integer.toString(defaultLetterSize)));
 
@@ -251,7 +253,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 			
 			if (result != null) {
 				getTextChar().setText(result.getSymbol());
-                getClueTextChar().setText(result.getClue());
+                getClueTextChar().setText( enableClue ? result.getClue() : "" );
 			}
 
 		} catch (Exception ex) {
