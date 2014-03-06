@@ -34,4 +34,12 @@
     <string name="action_english">English...</string>
     <string name="action_mandarin">Mandarin...</string>
     <string name="action_1st_char_mandarin">Level 1</string>
+
+    <string name="about_review">Rate this App</string>
+    <string name="about_email">kris.krause@gmail.com</string>
+    <string name="about_license">GPL v2</string>
+    <string name="about_source_blurb">Source code &amp; more visit -</string>
+    <string name="about_url">https://github.com/dragthor/learning</string>
+    <string name="about_info">Free. No ads. No social. No alerts.  No in-app purchase.  No internet required. Battery friendly. Open source.</string>
+
 </resources>
