@@ -80,12 +80,12 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-
 		outState.putString(LAST_DISPLAY, getTextChar().getText().toString());
         outState.putString(LAST_DISPLAY_CLUE, getClueTextChar().getText().toString());
 		outState.putInt(LAST_MODE, _mode);
 		outState.putInt(LAST_SEQUENCE_POS, _seqIndex);
+
+        super.onSaveInstanceState(outState);
 	}
 
     @Override 
