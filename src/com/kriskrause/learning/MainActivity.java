@@ -32,6 +32,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private static final String LAST_DISPLAY_CLUE = "LAST_DISPLAY_CLUE";
     private static final String LAST_MODE = "LAST_MODE";
     private static final String LAST_SEQUENCE_POS = "LAST_SEQUENCE_POS";
+    private static final String LAST_PREFS = "LAST_PREFS";
 
     private static final int MaxCharSize = 500;
     private TextView _txtChar;
@@ -67,7 +68,21 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
                     savedInstanceState.getString(LAST_DISPLAY_CLUE));
 
 			callbackTextChanged(item);
-		}
+		} else {
+            // Attempt to get from shared prefeneces.
+            SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
+
+            if (settings != null) {
+                _mode = settings.getInt(LAST_MODE, 0);
+                _seqIndex = settings.getInt(LAST_SEQUENCE_POS, -1);
+
+                DataItem item = new DataItem(
+                        settings.getString(LAST_DISPLAY, ""),
+                        settings.getString(LAST_DISPLAY_CLUE, ""));
+
+                callbackTextChanged(item);
+            }
+        }
     }
 
 	@Override
@@ -78,14 +93,28 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 		invalidateOptionsMenu();
 	}
 
+    @Override
+    protected void onPause(){
+        super.onPause();
+
+        SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt(LAST_MODE, _mode);
+        editor.putInt(LAST_SEQUENCE_POS, _seqIndex);
+        editor.putString(LAST_DISPLAY, getTextChar().getText().toString());
+        editor.putString(LAST_DISPLAY_CLUE, getClueTextChar().getText().toString());
+
+        editor.commit();
+    }
+
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+
 		outState.putString(LAST_DISPLAY, getTextChar().getText().toString());
         outState.putString(LAST_DISPLAY_CLUE, getClueTextChar().getText().toString());
 		outState.putInt(LAST_MODE, _mode);
 		outState.putInt(LAST_SEQUENCE_POS, _seqIndex);
-
-        super.onSaveInstanceState(outState);
 	}
 
     @Override 
