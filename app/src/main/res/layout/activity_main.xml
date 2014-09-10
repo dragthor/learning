@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+<com.kriskrause.learning.AutofitTextView
+    android:id="@+id/txt_character"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="175sp"
+    android:layout_weight="8"
+    android:layout_gravity="center"
+    android:gravity="center"
+    custom:minTextSize="75sp"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
+    />
+
+<com.kriskrause.learning.AutofitTextView
+    android:id="@+id/txt_clue"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="25sp"
+    android:layout_weight="2"
+    android:layout_gravity="center"
+    android:gravity="center"
+    custom:minTextSize="10sp"
+    android:layout_marginLeft="5sp"
+    android:layout_marginRight="5sp"
+    />
+</LinearLayout>

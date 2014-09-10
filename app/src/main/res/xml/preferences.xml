@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="General"
+        android:key="general">
+
+        <SwitchPreference
+            android:key="enable_speech"
+            android:summary="Enable or disable speech"
+            android:title="Enable Speech"
+            android:defaultValue="true"
+            android:switchTextOn="Yes"
+            android:switchTextOff="No"
+            />
+
+        <Preference android:title="Voice &amp; Speech Settings"
+            android:key="button_tts_settings"
+            android:summary="Adjust the rate or change engine"
+            android:dependency="enable_speech"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Learning"
+        android:key="learning">
+
+        <ListPreference
+            android:key="selection_style"
+            android:title="Selection Style"
+            android:summary="Determines how letters/numbers/words are chosen"
+            android:defaultValue="random"
+            android:entries="@array/selectionStyle"
+            android:entryValues="@array/selectionStyleValues"
+            />
+
+
+        <SwitchPreference
+            android:key="enable_clue"
+            android:summary="Show or hide clue"
+            android:title="Show Clue"
+            android:defaultValue="true"
+            android:switchTextOn="Yes"
+            android:switchTextOff="No"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
