@@ -35,11 +35,11 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private TextView _txtChar;
     private TextView _txtClue;
     private int _mode = 0;
+    private String _modeDisplay = "Letters";
     private SharedPreferences _prefs;
     private TextToSpeech _speech;
     private int _seqIndex = -1;
     private int _speechStatus = -1;
-    private String _modeDisplay = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         if (savedInstanceState != null) {
             _mode = savedInstanceState.getInt(LAST_MODE, 0);
             _seqIndex = savedInstanceState.getInt(LAST_SEQUENCE_POS, -1);
-            _modeDisplay = savedInstanceState.getString(LAST_MODE_DISPLAY, "");
+            _modeDisplay = savedInstanceState.getString(LAST_MODE_DISPLAY, "Letters");
 
             DataItem item = new DataItem(
                     savedInstanceState.getString(LAST_DISPLAY, ""),
@@ -74,7 +74,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
             if (settings != null) {
                 _mode = settings.getInt(LAST_MODE, 0);
                 _seqIndex = settings.getInt(LAST_SEQUENCE_POS, -1);
-                _modeDisplay = settings.getString(LAST_MODE_DISPLAY, "");
+                _modeDisplay = settings.getString(LAST_MODE_DISPLAY, "Letters");
 
                 DataItem item = new DataItem(
                         settings.getString(LAST_DISPLAY, ""),
@@ -346,8 +346,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
     private void setSubTitle(String menuText) {
         try {
-            if (menuText == null) {
-                getActionBar().setSubtitle("");
+            if (menuText == null || menuText.length() == 0) {
                 return;
             }
 

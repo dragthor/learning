@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Reading Buddy</string>
-    <string name="app_version">Version 1.1</string>
+    <string name="app_version">Version 1.2</string>
 
     <string name="action_play">Play</string>
 
