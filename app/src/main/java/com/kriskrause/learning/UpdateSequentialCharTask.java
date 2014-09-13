@@ -1,7 +1,5 @@
 package com.kriskrause.learning;
 
-import android.os.AsyncTask;
-
 public class UpdateSequentialCharTask extends CharTask {
 	private int _index = 0;
 

@@ -27,6 +27,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private static final String LAST_DISPLAY = "LAST_DISPLAY";
     private static final String LAST_DISPLAY_CLUE = "LAST_DISPLAY_CLUE";
     private static final String LAST_MODE = "LAST_MODE";
+    private static final String LAST_MODE_DISPLAY = "LAST_MODE_DISPLAY";
     private static final String LAST_SEQUENCE_POS = "LAST_SEQUENCE_POS";
     private static final String LAST_PREFS = "LAST_PREFS";
 
@@ -38,6 +39,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private TextToSpeech _speech;
     private int _seqIndex = -1;
     private int _speechStatus = -1;
+    private String _modeDisplay = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,21 +58,23 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         getClueTextChar().setSoundEffectsEnabled(false);
 
         if (savedInstanceState != null) {
-            _mode = savedInstanceState.getInt(LAST_MODE);
-            _seqIndex = savedInstanceState.getInt(LAST_SEQUENCE_POS);
+            _mode = savedInstanceState.getInt(LAST_MODE, 0);
+            _seqIndex = savedInstanceState.getInt(LAST_SEQUENCE_POS, -1);
+            _modeDisplay = savedInstanceState.getString(LAST_MODE_DISPLAY, "");
 
             DataItem item = new DataItem(
-                    savedInstanceState.getString(LAST_DISPLAY),
-                    savedInstanceState.getString(LAST_DISPLAY_CLUE));
+                    savedInstanceState.getString(LAST_DISPLAY, ""),
+                    savedInstanceState.getString(LAST_DISPLAY_CLUE, ""));
 
             callbackTextChanged(item);
         } else {
-            // Attempt to get from shared prefeneces.
+            // Attempt to get from shared preferences.
             SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
 
             if (settings != null) {
                 _mode = settings.getInt(LAST_MODE, 0);
                 _seqIndex = settings.getInt(LAST_SEQUENCE_POS, -1);
+                _modeDisplay = settings.getString(LAST_MODE_DISPLAY, "");
 
                 DataItem item = new DataItem(
                         settings.getString(LAST_DISPLAY, ""),
@@ -95,10 +99,12 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
         SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
         SharedPreferences.Editor editor = settings.edit();
+
         editor.putInt(LAST_MODE, _mode);
         editor.putInt(LAST_SEQUENCE_POS, _seqIndex);
         editor.putString(LAST_DISPLAY, getTextChar().getText().toString());
         editor.putString(LAST_DISPLAY_CLUE, getClueTextChar().getText().toString());
+        editor.putString(LAST_MODE_DISPLAY, _modeDisplay);
 
         editor.commit();
     }
@@ -111,6 +117,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         outState.putString(LAST_DISPLAY_CLUE, getClueTextChar().getText().toString());
         outState.putInt(LAST_MODE, _mode);
         outState.putInt(LAST_SEQUENCE_POS, _seqIndex);
+        outState.putString(LAST_MODE_DISPLAY, _modeDisplay);
     }
 
     @Override
@@ -150,6 +157,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
+
+        setSubTitle(_modeDisplay);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -222,6 +231,8 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         }
 
         if (retVal && shouldToast) {
+            setSubTitle(item.getTitle().toString());
+
             Toast toast = Toast.makeText(this, item.getTitle() + " ...", Toast.LENGTH_SHORT);
             toast.show();
         }
@@ -331,5 +342,20 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         }
 
         return _txtClue;
+    }
+
+    private void setSubTitle(String menuText) {
+        try {
+            if (menuText == null) {
+                getActionBar().setSubtitle("");
+                return;
+            }
+
+            getActionBar().setSubtitle(menuText);
+
+            _modeDisplay = menuText;
+        } catch (Exception ex) {
+            handleError("MainActivity::setSubTitle", ex);
+        }
     }
 }
