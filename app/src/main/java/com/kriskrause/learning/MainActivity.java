@@ -8,19 +8,20 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.MotionEvent;
 import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.widget.Toast;
-import android.view.View.OnClickListener;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class MainActivity extends Activity implements OnClickListener, ICallbackListener, TextToSpeech.OnInitListener {
+public class MainActivity extends Activity
+        implements GestureDetector.OnGestureListener, ICallbackListener, TextToSpeech.OnInitListener {
 
     public static final String TAG = "LEARNING";
 
@@ -31,7 +32,10 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private static final String LAST_SEQUENCE_POS = "LAST_SEQUENCE_POS";
     private static final String LAST_PREFS = "LAST_PREFS";
 
+    private static final int SWIPE_THRESHOLD = 100;
+    private static final int SWIPE_VELOCITY_THRESHOLD = 100;
     private static final int MaxCharSize = 500;
+
     private TextView _txtChar;
     private TextView _txtClue;
     private int _mode = 0;
@@ -40,6 +44,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
     private TextToSpeech _speech;
     private int _seqIndex = -1;
     private int _speechStatus = -1;
+    private GestureDetector _detector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +55,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
 
         _speech = new TextToSpeech(this, this);
 
-        getTextChar().setOnClickListener(this);
-        getClueTextChar().setOnClickListener(this);
-
-        // Disable tap click sound.
-        getTextChar().setSoundEffectsEnabled(false);
-        getClueTextChar().setSoundEffectsEnabled(false);
+        _detector = new GestureDetector(this, this);
 
         if (savedInstanceState != null) {
             _mode = savedInstanceState.getInt(LAST_MODE, 0);
@@ -240,8 +240,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         return retVal;
     }
 
-    @Override
-    public void onClick(View v) {
+    private void updateChars() {
         String selectionStyle = _prefs.getString("selection_style", "random");
         CharTask taskGetChar;
         IData language;
@@ -302,7 +301,7 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         _mode = mode;
         _seqIndex = -1;
 
-        onClick(getTextChar());
+        updateChars();
     }
 
     private void handleError(String message) {
@@ -356,5 +355,65 @@ public class MainActivity extends Activity implements OnClickListener, ICallback
         } catch (Exception ex) {
             handleError("MainActivity::setSubTitle", ex);
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        this._detector.onTouchEvent(event);
+
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return true;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return true;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent2, float v, float v2) {
+        return true;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent2, float velocityX, float velocityY) {
+        boolean result = false;
+
+        try {
+            float diffY = motionEvent2.getY() - motionEvent.getY();
+            float diffX = motionEvent2.getX() - motionEvent.getX();
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                    if (diffX > 0) {
+                        // Swiped right.
+                        updateChars();
+                    } else {
+                        // Swiped left.
+                    }
+                }
+                result = true;
+            }
+
+            result = true;
+
+        } catch (Exception ex) {
+            handleError("MainActivity::onFling", ex);
+        }
+        return result;
     }
 }
