@@ -42,6 +42,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.kriskrause.learning.MainActivity" />
         </activity>
+
+
+        <activity android:name="CustomCharListActivity"
+            android:label="@string/title_custom_char_activity"
+            android:parentActivityName="MainActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kriskrause.learning.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

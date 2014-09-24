@@ -18,7 +18,9 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 public class MainActivity extends Activity
         implements GestureDetector.OnGestureListener, ICallbackListener, TextToSpeech.OnInitListener {
@@ -30,7 +32,9 @@ public class MainActivity extends Activity
     private static final String LAST_MODE = "LAST_MODE";
     private static final String LAST_MODE_DISPLAY = "LAST_MODE_DISPLAY";
     private static final String LAST_SEQUENCE_POS = "LAST_SEQUENCE_POS";
-    private static final String LAST_PREFS = "LAST_PREFS";
+
+    public static final String LAST_PREFS = "LAST_PREFS";
+    public static final String CURRENT_REVIEW = "CURRENT_REVIEW";
 
     private static final int SWIPE_THRESHOLD = 100;
     private static final int SWIPE_VELOCITY_THRESHOLD = 100;
@@ -45,6 +49,7 @@ public class MainActivity extends Activity
     private int _seqIndex = -1;
     private int _speechStatus = -1;
     private GestureDetector _detector;
+    private Set<String> _reviewItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +88,16 @@ public class MainActivity extends Activity
                 callbackTextChanged(item);
             }
         }
+
+        SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
+
+        if (settings != null) {
+            _reviewItems = settings.getStringSet(CURRENT_REVIEW, null);
+
+            if (_reviewItems == null) {
+                _reviewItems = new HashSet<String>();
+            }
+        }
     }
 
     @Override
@@ -105,6 +120,7 @@ public class MainActivity extends Activity
         editor.putString(LAST_DISPLAY, getTextChar().getText().toString());
         editor.putString(LAST_DISPLAY_CLUE, getClueTextChar().getText().toString());
         editor.putString(LAST_MODE_DISPLAY, _modeDisplay);
+        editor.putStringSet(CURRENT_REVIEW, _reviewItems);
 
         editor.commit();
     }
@@ -214,6 +230,11 @@ public class MainActivity extends Activity
                 openIntent(SettingsActivity.class);
                 retVal = true;
                 shouldToast = false;boolean enableClue = new Boolean(_prefs.getBoolean("enable_clue", true));
+                break;
+            case R.id.action_review:
+                openIntent(CustomCharListActivity.class);
+                retVal = true;
+                shouldToast = false;
                 break;
             case R.id.action_play:
                 retVal = true;
@@ -386,7 +407,12 @@ public class MainActivity extends Activity
 
     @Override
     public void onLongPress(MotionEvent motionEvent) {
+        String currentChar = getTextChar().getText().toString();
 
+        _reviewItems.add(currentChar);
+
+        Toast toast = Toast.makeText(this, currentChar  + " marked for review.", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     @Override
