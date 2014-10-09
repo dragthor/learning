@@ -149,7 +149,6 @@ public class MainActivity extends Activity
     public void onInit(int status) {
         String msg;
         Resources res = getResources();
-        boolean playSound = new Boolean(_prefs.getBoolean("enable_speech", true));
 
         _speechStatus = status;
 
