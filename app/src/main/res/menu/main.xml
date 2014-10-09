@@ -30,10 +30,9 @@
 
 </item>
 
+    <item android:id="@+id/action_review" android:title="@string/action_review" android:showAsAction="never" android:icon="@drawable/ic_action_collection" />
 
-    <item android:id="@+id/action_review" android:title="@string/action_review" android:showAsAction="never"
-        android:icon="@drawable/ic_action_collection" />
+    <item android:id="@+id/action_help" android:title="@string/action_help" android:showAsAction="never" android:icon="@drawable/ic_action_help" />
 
     <item android:id="@+id/action_about" android:title="@string/action_about" android:showAsAction="never" android:icon="@drawable/ic_action_about" />
-
 </menu>

@@ -225,6 +225,11 @@ public class MainActivity extends Activity
                 retVal = true;
                 shouldToast = false;
                 break;
+            case R.id.action_help:
+                openIntent(HelpActivity.class);
+                retVal = true;
+                shouldToast = false;
+                break;
             case R.id.action_settings:
                 openIntent(SettingsActivity.class);
                 retVal = true;
