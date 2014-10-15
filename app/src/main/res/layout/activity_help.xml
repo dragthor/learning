@@ -11,15 +11,131 @@
         >
 
         <TextView
+            android:id="@+id/titleMain"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Long press to mark an item for review."
-            android:textSize="16sp"
-            android:layout_marginTop="5sp"
+            android:text="@string/help_mainTitle"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8sp"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="5sp"
-            android:layout_marginBottom="10sp"
+            android:layout_marginBottom="12sp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_nextInstruction"
+            android:textSize="18sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="12sp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_markReviewInstruction"
+            android:textSize="18sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="12sp"
+            />
+
+
+        <TextView
+            android:id="@+id/titleReviews"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_reviewTitle"
+            android:textSize="20sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="12sp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_removeItemInstruction"
+            android:textSize="18sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="12sp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_reviewSelectInstruction"
+            android:textSize="18sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="2sp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_reviewVoiceInstruction"
+            android:textSize="18sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="12sp"
+            />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height= "1dp"
+            android:layout_marginBottom="12sp"
+            android:background="#c0c0c0"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/help_contribute"
+
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="2sp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/help_contributeDetails"
+
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="12sp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/about_source_blurb"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="12sp"
             />
 
 
@@ -27,22 +143,12 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="To remove an item from your review list... long press."
+            android:text="@string/about_url"
             android:textSize="16sp"
+            android:autoLink="web"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="5sp"
-            android:layout_marginBottom="10sp"
-            />
-
-        <TextView
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select item to hear in your review list (if voice enabled)."
-            android:textSize="16sp"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
-            android:layout_marginBottom="10sp"
+            android:layout_marginBottom="12sp"
             />
 
 

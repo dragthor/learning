@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Reading Buddy</string>
     <string name="app_version">Version 1.2</string>
     <string name="action_play">Play</string>
@@ -23,11 +22,11 @@
     <string name="action_about">About</string>
     <string name="title_settings_activity">Settings</string>
     <string name="title_about_activity">About</string>
-    <string name="language_unsupported">Language not supported ...</string>
-    <string name="speech_ready">Speech ready ...</string>
-    <string name="speech_fail">Speech init failed ...</string>
-    <string name="action_english">English...</string>
-    <string name="action_mandarin">Mandarin...</string>
+    <string name="language_unsupported">Language not supported …</string>
+    <string name="speech_ready">Speech ready …</string>
+    <string name="speech_fail">Speech init failed …</string>
+    <string name="action_english">English…</string>
+    <string name="action_mandarin">Mandarin…</string>
     <string name="action_1st_char_mandarin">Level 1</string>
     <string name="about_review">Rate this App</string>
     <string name="about_email">kris.krause@gmail.com</string>
@@ -36,8 +35,15 @@
     <string name="about_url">https://github.com/dragthor/learning</string>
     <string name="about_info">Free. No ads. No social. No alerts.  No in-app purchase.  No internet required. Battery friendly. Open source.</string>
     <string name="title_custom_char_activity">Review Items</string>
-
     <string name="title_activity_help">Help</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="help_mainTitle">Main Activity</string>
+    <string name="help_nextInstruction">Swipe left-to-right to see the next item.</string>
+    <string name="help_markReviewInstruction">Long press to mark an item for review.</string>
+    <string name="help_reviewTitle">Review Items</string>
+    <string name="help_removeItemInstruction">Long press to remove an item from the list.</string>
+    <string name="help_reviewSelectInstruction">Select an item in the list to listen.</string>
+    <string name="help_reviewVoiceInstruction">(if voice enabled)</string>
+    <string name="help_contribute">Want to help contribute?</string>
+    <string name="help_contributeDetails">(documentation, graphics, ideas, code)</string>
 
 </resources>
