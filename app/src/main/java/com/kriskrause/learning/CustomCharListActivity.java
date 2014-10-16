@@ -35,15 +35,7 @@ public class CustomCharListActivity extends Activity implements TextToSpeech.OnI
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        SharedPreferences settings = getSharedPreferences(MainActivity.LAST_PREFS, 0);
-
-        if (settings != null) {
-            _reviewItems = settings.getStringSet(MainActivity.CURRENT_REVIEW, null);
-
-            if (_reviewItems == null) {
-                _reviewItems = new HashSet<String>();
-            }
-        }
+        loadReviewItems();
 
         final ListView listView = (ListView) findViewById(R.id.custom_chars_list_view);
 
@@ -143,5 +135,17 @@ public class CustomCharListActivity extends Activity implements TextToSpeech.OnI
         editor.putStringSet(MainActivity.CURRENT_REVIEW, _reviewItems);
 
         editor.commit();
+    }
+
+    private void loadReviewItems() {
+        SharedPreferences settings = getSharedPreferences(MainActivity.LAST_PREFS, 0);
+
+        if (settings == null) return;
+
+        _reviewItems = settings.getStringSet(MainActivity.CURRENT_REVIEW, null);
+
+        if (_reviewItems == null) {
+            _reviewItems = new HashSet<String>();
+        }
     }
 }

@@ -36,6 +36,10 @@ public class MainActivity extends Activity
     public static final String LAST_PREFS = "LAST_PREFS";
     public static final String CURRENT_REVIEW = "CURRENT_REVIEW";
 
+    public static final String LAST_DISPLAY_DEFAULT = "A";
+    public static final String LAST_DISPLAY_CLUE_DEFAULT = "Apple";
+    public static final String LAST_MODE_DISPLAY_DEFAULT = "Letters";
+
     private static final int SWIPE_THRESHOLD = 100;
     private static final int SWIPE_VELOCITY_THRESHOLD = 100;
     private static final int MaxCharSize = 500;
@@ -43,7 +47,7 @@ public class MainActivity extends Activity
     private TextView _txtChar;
     private TextView _txtClue;
     private int _mode = 0;
-    private String _modeDisplay = "Letters";
+    private String _modeDisplay = LAST_MODE_DISPLAY_DEFAULT;
     private SharedPreferences _prefs;
     private TextToSpeech _speech;
     private int _seqIndex = -1;
@@ -56,6 +60,8 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DataItem item = null;
+
         _prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         _speech = new TextToSpeech(this, this);
@@ -65,13 +71,11 @@ public class MainActivity extends Activity
         if (savedInstanceState != null) {
             _mode = savedInstanceState.getInt(LAST_MODE, 0);
             _seqIndex = savedInstanceState.getInt(LAST_SEQUENCE_POS, -1);
-            _modeDisplay = savedInstanceState.getString(LAST_MODE_DISPLAY, "Letters");
+            _modeDisplay = savedInstanceState.getString(LAST_MODE_DISPLAY, LAST_MODE_DISPLAY_DEFAULT);
 
-            DataItem item = new DataItem(
-                    savedInstanceState.getString(LAST_DISPLAY, ""),
-                    savedInstanceState.getString(LAST_DISPLAY_CLUE, ""));
-
-            callbackTextChanged(item);
+            item = new DataItem(
+                    savedInstanceState.getString(LAST_DISPLAY, LAST_DISPLAY_DEFAULT),
+                    savedInstanceState.getString(LAST_DISPLAY_CLUE, LAST_DISPLAY_CLUE_DEFAULT));
         } else {
             // Attempt to get from shared preferences.
             SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
@@ -79,25 +83,24 @@ public class MainActivity extends Activity
             if (settings != null) {
                 _mode = settings.getInt(LAST_MODE, 0);
                 _seqIndex = settings.getInt(LAST_SEQUENCE_POS, -1);
-                _modeDisplay = settings.getString(LAST_MODE_DISPLAY, "Letters");
+                _modeDisplay = settings.getString(LAST_MODE_DISPLAY, LAST_MODE_DISPLAY_DEFAULT);
 
-                DataItem item = new DataItem(
-                        settings.getString(LAST_DISPLAY, ""),
-                        settings.getString(LAST_DISPLAY_CLUE, ""));
-
-                callbackTextChanged(item);
+               item = new DataItem(
+                        settings.getString(LAST_DISPLAY, LAST_DISPLAY_DEFAULT),
+                        settings.getString(LAST_DISPLAY_CLUE, LAST_DISPLAY_CLUE_DEFAULT));
             }
         }
 
-        SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
+        callbackTextChanged(item);
 
-        if (settings != null) {
-            _reviewItems = settings.getStringSet(CURRENT_REVIEW, null);
+        loadReviewItems();
+    }
 
-            if (_reviewItems == null) {
-                _reviewItems = new HashSet<String>();
-            }
-        }
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        loadReviewItems();
     }
 
     @Override
@@ -300,6 +303,8 @@ public class MainActivity extends Activity
         int defaultWordSize = 75;
         int defaultLetterSize = 175;
 
+        if (result == null) return;
+
         try {
             boolean enableClue = new Boolean(_prefs.getBoolean("enable_clue", true));
             int wordSize = Integer.parseInt(_prefs.getString("wordSize",  Integer.toString(defaultWordSize)));
@@ -312,11 +317,8 @@ public class MainActivity extends Activity
             // Auto resize
             // getTextChar().setTextSize(TypedValue.COMPLEX_UNIT_SP, (_mode == 0 || _mode == 1) ? letterSize : wordSize);
 
-            if (result != null) {
-                getTextChar().setText(result.getSymbol());
-                getClueTextChar().setText( enableClue ? result.getClue() : "" );
-            }
-
+            getTextChar().setText(result.getSymbol());
+            getClueTextChar().setText( enableClue ? result.getClue() : "" );
         } catch (Exception ex) {
             handleError("MainActivity::callbackTextChanged", ex);
         }
@@ -379,6 +381,18 @@ public class MainActivity extends Activity
             _modeDisplay = menuText;
         } catch (Exception ex) {
             handleError("MainActivity::setSubTitle", ex);
+        }
+    }
+
+    private void loadReviewItems() {
+        SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
+
+        if (settings == null) return;
+
+        _reviewItems = settings.getStringSet(CURRENT_REVIEW, null);
+
+        if (_reviewItems == null) {
+            _reviewItems = new HashSet<String>();
         }
     }
 
