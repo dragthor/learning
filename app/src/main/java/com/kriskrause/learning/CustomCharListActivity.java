@@ -58,7 +58,7 @@ public class CustomCharListActivity extends Activity implements TextToSpeech.OnI
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 final String item = (String) parent.getItemAtPosition(position);
-                boolean playSound = new Boolean(_prefs.getBoolean("enable_speech", true));
+                boolean playSound = _prefs.getBoolean("enable_speech", true);
 
                 if (item == null) return;
                 if (playSound == false) return;
@@ -113,7 +113,7 @@ public class CustomCharListActivity extends Activity implements TextToSpeech.OnI
             msg = res.getString(R.string.speech_fail);
         }
 
-        Log.i(MainActivity.TAG, msg);
+        Log.i(LearningApplication.TAG, msg);
     }
 
     @Override
@@ -129,20 +129,20 @@ public class CustomCharListActivity extends Activity implements TextToSpeech.OnI
     protected void onPause(){
         super.onPause();
 
-        SharedPreferences settings = getSharedPreferences(MainActivity.LAST_PREFS, 0);
+        SharedPreferences settings = getSharedPreferences(LearningApplication.LAST_PREFS, 0);
         SharedPreferences.Editor editor = settings.edit();
 
-        editor.putStringSet(MainActivity.CURRENT_REVIEW, _reviewItems);
+        editor.putStringSet(LearningApplication.CURRENT_REVIEW, _reviewItems);
 
-        editor.commit();
+        editor.apply();
     }
 
     private void loadReviewItems() {
-        SharedPreferences settings = getSharedPreferences(MainActivity.LAST_PREFS, 0);
+        SharedPreferences settings = getSharedPreferences(LearningApplication.LAST_PREFS, 0);
 
         if (settings == null) return;
 
-        _reviewItems = settings.getStringSet(MainActivity.CURRENT_REVIEW, null);
+        _reviewItems = settings.getStringSet(LearningApplication.CURRENT_REVIEW, null);
 
         if (_reviewItems == null) {
             _reviewItems = new HashSet<String>();

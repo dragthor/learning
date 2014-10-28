@@ -25,20 +25,11 @@ import java.util.Set;
 public class MainActivity extends Activity
         implements GestureDetector.OnGestureListener, ICallbackListener, TextToSpeech.OnInitListener {
 
-    public static final String TAG = "LEARNING";
-
     private static final String LAST_DISPLAY = "LAST_DISPLAY";
     private static final String LAST_DISPLAY_CLUE = "LAST_DISPLAY_CLUE";
     private static final String LAST_MODE = "LAST_MODE";
     private static final String LAST_MODE_DISPLAY = "LAST_MODE_DISPLAY";
     private static final String LAST_SEQUENCE_POS = "LAST_SEQUENCE_POS";
-
-    public static final String LAST_PREFS = "LAST_PREFS";
-    public static final String CURRENT_REVIEW = "CURRENT_REVIEW";
-
-    public static final String LAST_DISPLAY_DEFAULT = "A";
-    public static final String LAST_DISPLAY_CLUE_DEFAULT = "Apple";
-    public static final String LAST_MODE_DISPLAY_DEFAULT = "Letters";
 
     private static final int SWIPE_THRESHOLD = 100;
     private static final int SWIPE_VELOCITY_THRESHOLD = 100;
@@ -47,7 +38,7 @@ public class MainActivity extends Activity
     private TextView _txtChar;
     private TextView _txtClue;
     private int _mode = 0;
-    private String _modeDisplay = LAST_MODE_DISPLAY_DEFAULT;
+    private String _modeDisplay = LearningApplication.LAST_MODE_DISPLAY_DEFAULT;
     private SharedPreferences _prefs;
     private TextToSpeech _speech;
     private int _seqIndex = -1;
@@ -71,23 +62,23 @@ public class MainActivity extends Activity
         if (savedInstanceState != null) {
             _mode = savedInstanceState.getInt(LAST_MODE, 0);
             _seqIndex = savedInstanceState.getInt(LAST_SEQUENCE_POS, -1);
-            _modeDisplay = savedInstanceState.getString(LAST_MODE_DISPLAY, LAST_MODE_DISPLAY_DEFAULT);
+            _modeDisplay = savedInstanceState.getString(LAST_MODE_DISPLAY, LearningApplication.LAST_MODE_DISPLAY_DEFAULT);
 
             item = new DataItem(
-                    savedInstanceState.getString(LAST_DISPLAY, LAST_DISPLAY_DEFAULT),
-                    savedInstanceState.getString(LAST_DISPLAY_CLUE, LAST_DISPLAY_CLUE_DEFAULT));
+                    savedInstanceState.getString(LAST_DISPLAY, LearningApplication.LAST_DISPLAY_DEFAULT),
+                    savedInstanceState.getString(LAST_DISPLAY_CLUE, LearningApplication.LAST_DISPLAY_CLUE_DEFAULT));
         } else {
             // Attempt to get from shared preferences.
-            SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
+            SharedPreferences settings = getSharedPreferences(LearningApplication.LAST_PREFS, 0);
 
             if (settings != null) {
                 _mode = settings.getInt(LAST_MODE, 0);
                 _seqIndex = settings.getInt(LAST_SEQUENCE_POS, -1);
-                _modeDisplay = settings.getString(LAST_MODE_DISPLAY, LAST_MODE_DISPLAY_DEFAULT);
+                _modeDisplay = settings.getString(LAST_MODE_DISPLAY, LearningApplication.LAST_MODE_DISPLAY_DEFAULT);
 
                item = new DataItem(
-                        settings.getString(LAST_DISPLAY, LAST_DISPLAY_DEFAULT),
-                        settings.getString(LAST_DISPLAY_CLUE, LAST_DISPLAY_CLUE_DEFAULT));
+                        settings.getString(LAST_DISPLAY, LearningApplication.LAST_DISPLAY_DEFAULT),
+                        settings.getString(LAST_DISPLAY_CLUE, LearningApplication.LAST_DISPLAY_CLUE_DEFAULT));
             }
         }
 
@@ -115,7 +106,7 @@ public class MainActivity extends Activity
     protected void onPause(){
         super.onPause();
 
-        SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
+        SharedPreferences settings = getSharedPreferences(LearningApplication.LAST_PREFS, 0);
         SharedPreferences.Editor editor = settings.edit();
 
         editor.putInt(LAST_MODE, _mode);
@@ -123,9 +114,9 @@ public class MainActivity extends Activity
         editor.putString(LAST_DISPLAY, getTextChar().getText().toString());
         editor.putString(LAST_DISPLAY_CLUE, getClueTextChar().getText().toString());
         editor.putString(LAST_MODE_DISPLAY, _modeDisplay);
-        editor.putStringSet(CURRENT_REVIEW, _reviewItems);
+        editor.putStringSet(LearningApplication.CURRENT_REVIEW, _reviewItems);
 
-        editor.commit();
+        editor.apply();
     }
 
     @Override
@@ -167,7 +158,7 @@ public class MainActivity extends Activity
             msg = res.getString(R.string.speech_fail);
         }
 
-        Log.i(MainActivity.TAG, msg);
+        Log.i(LearningApplication.TAG, msg);
     }
 
     @Override
@@ -183,7 +174,7 @@ public class MainActivity extends Activity
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        boolean playSound = new Boolean(_prefs.getBoolean("enable_speech", true));
+        boolean playSound = _prefs.getBoolean("enable_speech", true);
 
         MenuItem play = menu.findItem(R.id.action_play);
         play.setEnabled(playSound);
@@ -236,7 +227,7 @@ public class MainActivity extends Activity
             case R.id.action_settings:
                 openIntent(SettingsActivity.class);
                 retVal = true;
-                shouldToast = false;boolean enableClue = new Boolean(_prefs.getBoolean("enable_clue", true));
+                shouldToast = false;boolean enableClue = _prefs.getBoolean("enable_clue", true);
                 break;
             case R.id.action_review:
                 openIntent(CustomCharListActivity.class);
@@ -306,7 +297,7 @@ public class MainActivity extends Activity
         if (result == null) return;
 
         try {
-            boolean enableClue = new Boolean(_prefs.getBoolean("enable_clue", true));
+            boolean enableClue = _prefs.getBoolean("enable_clue", true);
             int wordSize = Integer.parseInt(_prefs.getString("wordSize",  Integer.toString(defaultWordSize)));
             int letterSize = Integer.parseInt(_prefs.getString("letterSize",  Integer.toString(defaultLetterSize)));
 
@@ -331,12 +322,8 @@ public class MainActivity extends Activity
         updateChars();
     }
 
-    private void handleError(String message) {
-        handleError(message, null);
-    }
-
     private void handleError(String message, Exception ex) {
-        Log.e(MainActivity.TAG, "exception", ex);
+        Log.e(LearningApplication.TAG, "exception", ex);
 
         AlertDialog alert = new AlertDialog.Builder(this).create();
         alert.setTitle("Error");
@@ -385,11 +372,11 @@ public class MainActivity extends Activity
     }
 
     private void loadReviewItems() {
-        SharedPreferences settings = getSharedPreferences(LAST_PREFS, 0);
+        SharedPreferences settings = getSharedPreferences(LearningApplication.LAST_PREFS, 0);
 
         if (settings == null) return;
 
-        _reviewItems = settings.getStringSet(CURRENT_REVIEW, null);
+        _reviewItems = settings.getStringSet(LearningApplication.CURRENT_REVIEW, null);
 
         if (_reviewItems == null) {
             _reviewItems = new HashSet<String>();

@@ -28,7 +28,7 @@ android:layout_height="fill_parent"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_version"
+        android:id="@+id/txt_version"
         android:textSize="20sp"
         android:layout_marginLeft="5sp"
         android:layout_marginRight="5sp"
@@ -94,7 +94,7 @@ android:layout_height="fill_parent"
         />
 
     <TextView
-        android:id="@+id/txt_Review"
+        android:id="@+id/txt_review"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

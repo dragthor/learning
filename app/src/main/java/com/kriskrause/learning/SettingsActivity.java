@@ -51,7 +51,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 
         startActivity(intent);
       } catch (Exception ex) {
-        Log.e(MainActivity.TAG, "exception", ex);
+        Log.e(LearningApplication.TAG, "exception", ex);
       }
     }
 }
