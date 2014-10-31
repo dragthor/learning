@@ -26,6 +26,7 @@
         <item android:id="@+id/action_8th100" android:title="@string/action_8th100" android:showAsAction="never" />
         <item android:id="@+id/action_9th100" android:title="@string/action_9th100" android:showAsAction="never" />
         <item android:id="@+id/action_10th100" android:title="@string/action_10th100" android:showAsAction="never" />
+        <item android:id="@+id/action_reviewItems" android:title="@string/action_reviewItems" android:showAsAction="never" />
     </menu>
 
 </item>

@@ -24,6 +24,10 @@ public final class EnglishData implements IData {
         _values.put(11, convertToDataItems(Tenth100));
     }
 
+    @Override
+    public int getReviewIndex() { return 12; }
+
+    @Override
     public ArrayList<DataItem> getItems(Integer keyIndex) {
         if (keyIndex <= 0) { // Default letters.
             return _values.get(0);
@@ -87,7 +91,7 @@ public final class EnglishData implements IData {
         _numbers.add(new DataItem("28", "twenty-eight"));
         _numbers.add(new DataItem("29", "twenty-nine"));
         _numbers.add(new DataItem("30", "thirty"));
-        _numbers.add(new DataItem("31", "thiry-one"));
+        _numbers.add(new DataItem("31", "thirty-one"));
 
         return _numbers;
     }

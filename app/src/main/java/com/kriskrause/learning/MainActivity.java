@@ -214,6 +214,8 @@ public class MainActivity extends Activity
                 setModeAndGetNextChar(10); retVal = true; break;
             case R.id.action_10th100:
                 setModeAndGetNextChar(11); retVal = true; break;
+            case R.id.action_reviewItems:
+                setModeAndGetNextChar(12); retVal = true; break;
             case R.id.action_about:
                 openIntent(AboutActivity.class);
                 retVal = true;
@@ -268,7 +270,18 @@ public class MainActivity extends Activity
         try {
             // Change to factory eventually depending on multi-language support.
             language = new EnglishData();
-            data = language.getItems(_mode);
+
+            if (_mode == language.getReviewIndex()) {
+                data = new ArrayList<DataItem>();
+
+                if (_reviewItems != null) {
+                    for (String s : _reviewItems) {
+                        data.add(new DataItem(s, ""));
+                    }
+                }
+            } else {
+                data = language.getItems(_mode);
+            }
 
             if (data == null) return;
 
