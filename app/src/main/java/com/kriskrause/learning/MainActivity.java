@@ -286,7 +286,7 @@ public class MainActivity extends Activity
                 data = language.getItems(_mode);
             }
 
-            if (data == null) return;
+            if (data == null || data.size() == 0) return;
 
             if (selectionStyle.equals("random")) {
                 taskGetChar = new UpdateRandomCharTask();
