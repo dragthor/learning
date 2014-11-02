@@ -18,6 +18,7 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -278,6 +279,8 @@ public class MainActivity extends Activity
                     for (String s : _reviewItems) {
                         data.add(new DataItem(s, ""));
                     }
+
+                    Collections.sort(data);
                 }
             } else {
                 data = language.getItems(_mode);

@@ -1,6 +1,6 @@
 package com.kriskrause.learning;
 
-public class DataItem {
+public class DataItem implements Comparable<DataItem> {
 	private String _symbol;
 	private String _clue;
 
@@ -16,4 +16,9 @@ public class DataItem {
 	public String getClue() {
 		return _clue;
 	}
+
+    @Override
+    public int compareTo(DataItem item) {
+        return this._symbol.compareTo(item.getSymbol());
+    }
 }
