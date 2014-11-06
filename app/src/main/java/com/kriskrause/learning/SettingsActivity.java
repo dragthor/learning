@@ -18,7 +18,9 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
       super.onCreate(savedInstanceState);
       addPreferencesFromResource(R.xml.preferences);
 
-      getActionBar().setDisplayHomeAsUpEnabled(true);
+      if (getActionBar() != null) {
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+      }
 
       Preference speechSettings = (Preference) findPreference(SPEECH_SETTINGS_BUTTON_NAME);
       speechSettings.setOnPreferenceClickListener(this);

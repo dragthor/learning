@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -160,6 +161,25 @@ public class MainActivity extends Activity
         }
 
         Log.i(LearningApplication.TAG, msg);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        boolean handled = false;
+
+        switch (keyCode){
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+            case KeyEvent.KEYCODE_BUTTON_A:
+                updateChars();
+                handled = true;
+                break;
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+            case KeyEvent.KEYCODE_BUTTON_B:
+                saveForReview();
+                handled = true;
+                break;
+        }
+        return handled || super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -379,6 +399,9 @@ public class MainActivity extends Activity
                 return;
             }
 
+            if (getActionBar() == null) return;
+            if (getActionBar().getSubtitle() == null) return;
+
             getActionBar().setSubtitle(menuText);
 
             _modeDisplay = menuText;
@@ -426,14 +449,18 @@ public class MainActivity extends Activity
         return true;
     }
 
-    @Override
-    public void onLongPress(MotionEvent motionEvent) {
+    private void saveForReview() {
         String currentChar = getTextChar().getText().toString();
 
         _reviewItems.add(currentChar);
 
         Toast toast = Toast.makeText(this, currentChar  + " marked for review.", Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+        saveForReview();
     }
 
     @Override

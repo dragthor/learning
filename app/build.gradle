@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 20
+    compileSdkVersion 17
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "com.kriskrause.learning"
-        minSdkVersion 15
-        targetSdkVersion 20
-        versionCode 4
-        versionName "1.4"
+        minSdkVersion 17
+        targetSdkVersion 17
+        versionCode 5
+        versionName "1.5"
     }
     buildTypes {
         release {
