@@ -9,7 +9,7 @@ The sight words come from Fry's List of 1000 Instant words. His list is made up 
 
 The list was compiled by Dr. Edward B. Fry in 1996.  His research found that just 25 words make up approximately 1/3 of all published text. He noted that 100 words make up about 1/2, and 300 words make up 65% of all written material.
 
-Free.  No ads.  No social.  No alerts.  No in-app purchase.  No internet required.  Battery friendly.  Open source.
+Free.  No ads.  No social.  No alerts.  No in-app purchase.  No internet required.  No GPS or location tracking. Battery friendly.  Open source. Please help contribute (non-financially).
 
 All 1,000 words in groups of 100, plus the alphabet (upper &amp; lower) and numbers one through thirty one.
 
