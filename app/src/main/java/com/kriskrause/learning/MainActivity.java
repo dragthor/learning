@@ -197,6 +197,12 @@ public class MainActivity extends Activity
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean playSound = _prefs.getBoolean("enable_speech", true);
 
+        if (getActionBar() == null) {
+            playSound = false;
+        } else if (getActionBar().isShowing() == false) {
+            playSound = false;
+        }
+
         MenuItem play = menu.findItem(R.id.action_play);
         play.setEnabled(playSound);
 
@@ -400,7 +406,7 @@ public class MainActivity extends Activity
             }
 
             if (getActionBar() == null) return;
-            if (getActionBar().getSubtitle() == null) return;
+            if (!getActionBar().isShowing()) return;
 
             getActionBar().setSubtitle(menuText);
 

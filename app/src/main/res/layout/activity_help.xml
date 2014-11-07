@@ -18,7 +18,7 @@
             android:text="@string/help_mainTitle"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="8sp"
+            android:layout_marginTop="@dimen/activity_top_margin"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="5sp"
             android:layout_marginBottom="12sp"
