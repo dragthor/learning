@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_nextInstruction">Press right using pad/stick (or A button) to see the next item.</string>
+    <string name="help_markReviewInstruction">Long press pad/stick (or B button) to mark an item for review.</string>
+    <string name="help_removeItemInstruction">Long press pad/stick (or A button) to remove an item from the list.</string>
+</resources>

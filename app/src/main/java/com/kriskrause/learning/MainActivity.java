@@ -47,6 +47,7 @@ public class MainActivity extends Activity
     private int _speechStatus = -1;
     private GestureDetector _detector;
     private Set<String> _reviewItems;
+    private Toast _toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -281,8 +282,7 @@ public class MainActivity extends Activity
         if (retVal && shouldToast) {
             setSubTitle(item.getTitle().toString());
 
-            Toast toast = Toast.makeText(this, item.getTitle() + " ...", Toast.LENGTH_SHORT);
-            toast.show();
+            showToast(item.getTitle() + " ...");
         }
 
         return retVal;
@@ -460,8 +460,19 @@ public class MainActivity extends Activity
 
         _reviewItems.add(currentChar);
 
-        Toast toast = Toast.makeText(this, currentChar  + " marked for review.", Toast.LENGTH_SHORT);
-        toast.show();
+        showToast(currentChar  + " marked for review.");
+    }
+
+    private void showToast(String msg) {
+        if (msg == null) return;
+        if (msg.length() == 0) return;
+
+        if (_toast == null) {
+            _toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+        }
+
+        _toast.setText(msg);
+        _toast.show();
     }
 
     @Override
