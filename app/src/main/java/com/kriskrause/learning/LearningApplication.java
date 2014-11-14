@@ -3,8 +3,8 @@ package com.kriskrause.learning;
 import android.app.Application;
 
 public class LearningApplication extends Application {
-    public static final boolean STORE_GOOGLE = false;
-    public static final boolean STORE_AMAZON = true;
+    public static final boolean STORE_GOOGLE = true;
+    public static final boolean STORE_AMAZON = false;
 
     public static final String TAG = "LEARNING";
 
