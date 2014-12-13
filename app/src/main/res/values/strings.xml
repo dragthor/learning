@@ -33,7 +33,8 @@
     <string name="about_license">GPL v2</string>
     <string name="about_source_blurb">Source code &amp; more visit -</string>
     <string name="about_url">https://github.com/dragthor/learning</string>
-    <string name="about_info">Free. No ads. No social. No alerts.  No in-app purchase.  No internet required. Battery friendly. Open source.</string>
+    <string name="about_info">Free. No ads. No social. No alerts. No in-app purchase. No internet required.</string>
+    <string name="about_info_more">No GPS or location tracking. Battery friendly. Open source.</string>
     <string name="title_custom_char_activity">Review Items</string>
     <string name="title_activity_help">Help</string>
     <string name="help_mainTitle">Main Activity</string>
@@ -42,8 +43,8 @@
     <string name="help_reviewTitle">Review Items</string>
     <string name="help_removeItemInstruction">Long press to remove an item from the list.</string>
     <string name="help_reviewSelectInstruction">Select an item in the list to listen.</string>
-    <string name="help_reviewVoiceInstruction">(if voice enabled)</string>
-    <string name="help_contribute">Want to help contribute?</string>
+    <string name="help_reviewVoiceInstruction">(if voice enabled and supported)</string>
+    <string name="help_contribute">Want to help contribute (non-financially)?</string>
     <string name="help_contributeDetails">(documentation, graphics, ideas, code)</string>
     <string name="store_google">market://details?id=</string>
     <string name="store_amazon">http://www.amazon.com/gp/mas/dl/android?p=</string>

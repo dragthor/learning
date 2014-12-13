@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="reivewList_margin">24dp</dimen>
+    <dimen name="activity_top_margin">16sp</dimen>
+</resources>

@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -46,6 +47,7 @@ public class MainActivity extends Activity
     private int _speechStatus = -1;
     private GestureDetector _detector;
     private Set<String> _reviewItems;
+    private Toast _toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +165,25 @@ public class MainActivity extends Activity
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        boolean handled = false;
+
+        switch (keyCode){
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+            case KeyEvent.KEYCODE_BUTTON_A:
+                updateChars();
+                handled = true;
+                break;
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+            case KeyEvent.KEYCODE_BUTTON_B:
+                saveForReview();
+                handled = true;
+                break;
+        }
+        return handled || super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
@@ -176,6 +197,12 @@ public class MainActivity extends Activity
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean playSound = _prefs.getBoolean("enable_speech", true);
+
+        if (getActionBar() == null) {
+            playSound = false;
+        } else if (getActionBar().isShowing() == false) {
+            playSound = false;
+        }
 
         MenuItem play = menu.findItem(R.id.action_play);
         play.setEnabled(playSound);
@@ -255,8 +282,7 @@ public class MainActivity extends Activity
         if (retVal && shouldToast) {
             setSubTitle(item.getTitle().toString());
 
-            Toast toast = Toast.makeText(this, item.getTitle() + " ...", Toast.LENGTH_SHORT);
-            toast.show();
+            showToast(item.getTitle() + " ...");
         }
 
         return retVal;
@@ -379,6 +405,9 @@ public class MainActivity extends Activity
                 return;
             }
 
+            if (getActionBar() == null) return;
+            if (!getActionBar().isShowing()) return;
+
             getActionBar().setSubtitle(menuText);
 
             _modeDisplay = menuText;
@@ -426,14 +455,29 @@ public class MainActivity extends Activity
         return true;
     }
 
-    @Override
-    public void onLongPress(MotionEvent motionEvent) {
+    private void saveForReview() {
         String currentChar = getTextChar().getText().toString();
 
         _reviewItems.add(currentChar);
 
-        Toast toast = Toast.makeText(this, currentChar  + " marked for review.", Toast.LENGTH_SHORT);
-        toast.show();
+        showToast(currentChar  + " marked for review.");
+    }
+
+    private void showToast(String msg) {
+        if (msg == null) return;
+        if (msg.length() == 0) return;
+
+        if (_toast == null) {
+            _toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+        }
+
+        _toast.setText(msg);
+        _toast.show();
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+        saveForReview();
     }
 
     @Override

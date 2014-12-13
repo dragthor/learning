@@ -15,7 +15,9 @@ public class HelpActivity extends Activity {
 
         setContentView(R.layout.activity_help);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         TextView txtMainTitle = (TextView) findViewById(R.id.titleMain);
         TextView txtMainReviews = (TextView) findViewById(R.id.titleReviews);

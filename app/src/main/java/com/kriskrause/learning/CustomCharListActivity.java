@@ -33,7 +33,9 @@ public class CustomCharListActivity extends Activity implements TextToSpeech.OnI
         _prefs = PreferenceManager.getDefaultSharedPreferences(this);
         _speech = new TextToSpeech(this, this);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         loadReviewItems();
 
