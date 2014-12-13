@@ -1,19 +1,17 @@
 package com.kriskrause.learning;
 
 import android.app.Activity;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.view.MenuItem;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.view.View;
-import android.widget.TextView;
-import android.view.View.OnClickListener;
-import java.lang.Exception;
-import android.util.Log;
+import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class AboutActivity extends Activity implements OnClickListener {
     private TextView _review;

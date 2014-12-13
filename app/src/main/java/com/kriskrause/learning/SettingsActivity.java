@@ -1,10 +1,10 @@
 package com.kriskrause.learning;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
-import android.content.Intent;
+import android.preference.PreferenceActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
