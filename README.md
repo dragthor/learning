@@ -23,10 +23,3 @@ Amazon -
 
 http://www.amazon.com/Camo-Media-LLC-Reading-Buddy/dp/B00I4TPTRI/
 
-
-![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/letter.png)
-
-![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/word.png)
-
-![Alt text](https://googledrive.com/host/0ByqChrWctKv4UzlOZEpDMWowclk/LearningApp/settings.png)
-
